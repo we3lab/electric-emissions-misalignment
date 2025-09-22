@@ -18,13 +18,15 @@ Some data cannot be republished under MIT license, in which case links to the da
 Code for data analysis can be found in `code/preprocess`. The preprocessing code was ran in the following order:
 
 ```
+python compile_average_mefs.py
 python tariff_timeseries.py
 ```
 
-Which creates the following preprocessed data:
+Which creates the following preprocessed data (note that this data has been saved to the repository for posterity, but should be recreated by the scripts exactly):
 
+- `data/MEFs/average_mefs.csv`: averages the marginal emission factor samples to create monthly/hourly average timeseries
 - `data/tariffs/timeseries`: tariffs are converted to timeseries format assuming a 1 MW load for future analysis
-- 
+
 
 ## Data analysis
 
