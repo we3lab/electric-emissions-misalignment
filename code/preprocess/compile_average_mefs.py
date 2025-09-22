@@ -9,7 +9,7 @@ national_data = None
 
 for region in regions:
     basepath = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # should be the root of the repo
-    folderpath = basepath + '/' + region
+    folderpath = os.path.join(basepath, region)
 
     month_to_str = {
         1:'Jan',
