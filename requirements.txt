@@ -1,5 +1,6 @@
 geopandas==1.1.1
 matplotlib
+matplotlib-scalebar
 numpy
 pandas
 seaborn==0.13.2

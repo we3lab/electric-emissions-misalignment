@@ -9,11 +9,13 @@ import os
 
 # change to root of repository
 os.chdir(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-basepath = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # should be the root of the repo
+basepath = os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+)  # should be the root of the repo
 
 # define plotting defaults
 plt.rcParams.update(
-    {   
+    {
         "font.family": "Arial",
         "font.size": 7,
         "axes.linewidth": 1,
@@ -26,18 +28,15 @@ plt.rcParams.update(
         "xtick.direction": "out",
         "ytick.direction": "out",
         "ytick.labelsize": 7,
-        "xtick.labelsize": 7, 
+        "xtick.labelsize": 7,
     }
 )
 
 vmin = -0.25
 vmax = 0.25
 
-# get the base path
-basepath = os.path.dirname(os.path.dirname(os.path.abspath(__vsc_ipynb_file__)))
-
 # locate the data folders
-corr_dir = os.path.join(basepath, "data/correlation")
+corr_dir = os.path.join(basepath, "data", "correlation")
 
 month_season_map = {
     1: "Winter",
@@ -51,22 +50,35 @@ month_season_map = {
     9: "Summer",
     10: "Summer",
     11: "Winter",
-    12: "Winter"
+    12: "Winter",
 }
 
 region_color_map = {
-    'CAISO': '#66c2a5',
-    'ERCOT': '#fc8d62',
-    'ISONE': '#8da0cb',
-    'MISO': '#a6d854',
-    'NYISO': '#ffd92f',
-    'PJM': '#e5c494',
-    'SPP': '#b3b3b3'
+    "CAISO": "#66c2a5",
+    "ERCOT": "#fc8d62",
+    "ISONE": "#8da0cb",
+    "MISO": "#a6d854",
+    "NYISO": "#ffd92f",
+    "PJM": "#e5c494",
+    "SPP": "#b3b3b3",
 }
 
-shapes = ['s', 'o', 'D', 'v', 'P', '*', 'X']
+shapes = ["s", "o", "D", "v", "P", "*", "X"]
 regions = ["CAISO", "ERCOT", "ISONE", "MISO", "NYISO", "PJM", "SPP"]
-months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+]
 region_shape_dict = dict(zip(regions, shapes))
 
 # SF map coordinates
@@ -76,8 +88,12 @@ y_min = 37.4
 y_max = 38.2
 
 ca_corr_df = pd.read_csv(os.path.join(corr_dir, "caiso_mef_pearson.csv"))
-sf_node_df = pd.read_csv(os.path.join(basepath, "data", "iso_map", "SFLMPLocations.csv"))
-iso = gpd.read_file(os.path.join(basepath, "data", "iso_map", "Independent_System_Operators.shp")).astype({"ID": "int64"})
+sf_node_df = pd.read_csv(
+    os.path.join(basepath, "data", "geospatial", "iso", "SFLMPLocations.csv")
+)
+iso = gpd.read_file(
+    os.path.join(basepath, "data", "geospatial", "iso", "Independent_System_Operators.shp")
+).astype({"ID": "int64"})
 caiso = iso[iso["NAME"] == "CALIFORNIA INDEPENDENT SYSTEM OPERATOR"]
 # convert CRS to one using meters for scale bar
 # caiso = caiso.to_crs(32619)
@@ -122,18 +138,20 @@ points = points.to_crs(32619)  # Projected WGS 84 - meters
 distance_meters = points[0].distance(points[1])
 
 ## Subplot A
-caiso.plot(ax=ax[0], color="white", edgecolor='k')
+caiso.plot(ax=ax[0], color="white", edgecolor="k")
 corr_gdf_a = gpd.GeoDataFrame(
-    jan_df, geometry=gpd.points_from_xy(jan_df.longitude, jan_df.latitude), crs=caiso.crs
+    jan_df,
+    geometry=gpd.points_from_xy(jan_df.longitude, jan_df.latitude),
+    crs=caiso.crs,
 )
 print(corr_gdf_a["pearson_cc"])
 plot_a = corr_gdf_a.plot(
-    ax=ax[0], 
+    ax=ax[0],
     column="pearson_cc",
-    edgecolor="black", 
+    edgecolor="black",
     cmap=plt.cm.PiYG,
-    vmin=vmin, 
-    vmax=vmax
+    vmin=vmin,
+    vmax=vmax,
 )
 # from https://gis.stackexchange.com/questions/471203/setting-the-background-color-when-plotting-in-geopandas
 background = gpd.GeoDataFrame(geometry=[box(x_min, y_min, x_max, y_max)], crs=caiso.crs)
@@ -148,18 +166,20 @@ ax[0].set_aspect(1)
 ax[0].add_artist(ScaleBar(distance_meters))
 
 ## Subplot B
-caiso.plot(ax=ax[1], color="white", edgecolor='k')
+caiso.plot(ax=ax[1], color="white", edgecolor="k")
 corr_gdf_b = gpd.GeoDataFrame(
-    jul_df, geometry=gpd.points_from_xy(jul_df.longitude, jul_df.latitude), crs=caiso.crs
+    jul_df,
+    geometry=gpd.points_from_xy(jul_df.longitude, jul_df.latitude),
+    crs=caiso.crs,
 )
 print(corr_gdf_b["pearson_cc"])
 plot_b = corr_gdf_b.plot(
-    ax=ax[1], 
-    column="pearson_cc", 
-    edgecolor="black", 
-    cmap=plt.cm.PiYG, 
-    vmin=vmin, 
-    vmax=0
+    ax=ax[1],
+    column="pearson_cc",
+    edgecolor="black",
+    cmap=plt.cm.PiYG,
+    vmin=vmin,
+    vmax=0,
 )
 # from https://gis.stackexchange.com/questions/471203/setting-the-background-color-when-plotting-in-geopandas
 background = gpd.GeoDataFrame(geometry=[box(x_min, y_min, x_max, y_max)], crs=caiso.crs)
@@ -183,25 +203,32 @@ for label, axis in zip(labels, ax.flatten()):
     # - offset 20 pixels left and 7 pixels up (offset points (-20, +7)),
     # i.e. just outside the axes.
     axis.text(
-        0.0, 
-        1.0, 
-        label, 
-        transform=(axis.transAxes + ScaledTranslation(-36/72, 0, fig.dpi_scale_trans)),
-        va='bottom',
-        fontsize=10
+        0.0,
+        1.0,
+        label,
+        transform=(
+            axis.transAxes + ScaledTranslation(-36 / 72, 0, fig.dpi_scale_trans)
+        ),
+        va="bottom",
+        fontsize=10,
     )
 
 fig.tight_layout()
-fig_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__vsc_ipynb_file__))), "figures")
+fig_path = os.path.join(basepath, "figures")
 fig.savefig(os.path.join(fig_path, "Figure6.svg"), bbox_inches="tight", dpi=300)
 fig.savefig(os.path.join(fig_path, "Figure6.png"), bbox_inches="tight", dpi=300)
 
 ## Add Colorbar
 sm = plt.cm.ScalarMappable(cmap=plt.cm.PiYG, norm=plt.Normalize(vmin=vmin, vmax=vmax))
-cbar = fig.colorbar(sm, ticks=[-0.25, -0.125, 0.0, 0.125, 0.25], ax=ax[1], shrink=0.5, orientation="horizontal")
+cbar = fig.colorbar(
+    sm,
+    ticks=[-0.25, -0.125, 0.0, 0.125, 0.25],
+    ax=ax[1],
+    shrink=0.5,
+    orientation="horizontal",
+)
 cbar.set_label("Pearson Correlation Coefficient", rotation=0)
 
 fig.tight_layout()
-fig_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__vsc_ipynb_file__))), "figures")
 fig.savefig(os.path.join(fig_path, "Figure6_cbar.svg"), bbox_inches="tight", dpi=300)
 fig.savefig(os.path.join(fig_path, "Figure6_cbar.png"), bbox_inches="tight", dpi=300)

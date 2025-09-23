@@ -106,4 +106,3 @@ sf_jul_corr_df = corr_gdf_b[
 
 print(sf_jul_corr_df[sf_jul_corr_df["location"] == "ELCRRTO_1_N023"])
 print(sf_jul_corr_df[sf_jul_corr_df["location"] == "GRIZZLY_7_N101"])
-print(sf_jul_corr_df[sf_jul_corr_df["pearson_cc"] == -0.1808122779328591])

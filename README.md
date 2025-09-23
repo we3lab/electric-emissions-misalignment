@@ -52,6 +52,7 @@ Code for data analysis can be found in `code/analyze`. The analysis code consist
 python dam_mef_alignment.py
 python tariff_aef_alignment.py
 python bay_area_correlation.py
+python correlation_versus_tariff_ratio.py
 ```
 
 This should create the following results in the `data` folder:
@@ -73,8 +74,8 @@ python figure6.py
 python supplementary1.py
 ```
 
-Note that Figure 1 was made outside of Python.
+Note that Figure 1 was made outside of Python. Figure 3 will throw an error without data provided by the user since we cannot re-publish the raw DAM data that we collected. 
 
 ## References
 
-[1] Siler-Evans et al. ...
+[1] Siler-Evans, K., Azevedo, I. L., & Morgan, M. G. (2012). Marginal emissions factors for the US electricity system. *Environmental science & technology, 46*(9), 4742-4748. https://doi.org/10.1021/es300145v
