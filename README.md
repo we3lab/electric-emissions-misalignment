@@ -2,7 +2,12 @@
 
 Code and data for analysis and visualization accompanying our manuscript entitled "Electricity costs and emissions incentives are misaligned for commercial and industrial power consumers".
 
-Before you get started, please install the Python dependencies listed in `requirements.txt`.
+Before you get started, please install the Python dependencies listed in `requirements.txt`. For example, using `pipenv`:
+
+```
+pipenv shell
+pip install -r requirements.txt
+```
 
 ## Data sources
 
@@ -24,6 +29,7 @@ Some data cannot be republished under MIT license, in which case links to the da
 Code for data analysis can be found in `code/preprocess`. The preprocessing code was ran in the following order:
 
 ```
+cd code/preprocess
 python compile_average_lmps.py
 python compile_average_mefs.py
 python tariff_timeseries.py
