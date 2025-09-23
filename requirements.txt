@@ -1,7 +1,7 @@
-geopandas
+geopandas==1.1.1
 matplotlib
 numpy
 pandas
-seaborn
+seaborn==0.13.2
 tqdm
-eeco
+eeco==0.1.0
