@@ -325,13 +325,11 @@ cbar.set_label("Number of Tariffs", rotation=90, labelpad=0)
 
 # Subplot H: DAM Variation
 # locate the data folders
-lmp_path = 'data/average_LMPs'
-mef_path = 'data/average_MEFs/2023'
-aef_path = 'data/average_AEFs'
+lmp_path = 'data/DAMs'
+mef_path = 'data/MEFs"
+aef_path = 'data/AEFs'
 
 fnames_lmp = [f for f in glob.glob(os.path.join(lmp_path, '*.csv'))]
-fnames_mef = [f for f in glob.glob(os.path.join(mef_path, '*.csv'))]
-fnames_aef = [f for f in glob.glob(os.path.join(aef_path, '*.csv'))]
 
 df_breakdown = pd.DataFrame(columns=['region', 'month', 'maxval', 'minval', 'ratio', 'mean'])
 
@@ -436,7 +434,7 @@ enum_month = {
 
 def get_lmp_month(iso, month):
     basepath = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__vsc_ipynb_file__))))
-    lmp_path = os.path.join(basepath, 'data', 'average_LMPs')
+    lmp_path = os.path.join(basepath, 'data', 'DAMs')
     lmp_fp = os.path.join(lmp_path, iso, f"{iso}_DAM_2023_{month}_HOUR.csv")
     if not os.path.exists(lmp_fp):
         raise FileNotFoundError(f"LMP file for {iso} in {month} does not exist at {lmp_fp}")

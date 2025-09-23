@@ -9,7 +9,7 @@ for region in regions:
     basepath = os.path.dirname(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     )  # should be the root of the repo
-    folderpath = os.path.join(basepath, "data", "LMPs", region)
+    folderpath = os.path.join(basepath, "data", "DAMs", region)
 
     month_to_str = {
         1: "Jan",
@@ -70,5 +70,5 @@ for region in regions:
     # save the data
     regional_data = regional_data.reset_index(drop=True)
     regional_data.to_csv(
-        os.path.join(basepath, "data", "LMPs", region + "costs.csv", index=False)
+        os.path.join(basepath, "data", "DAMs", region + "costs.csv", index=False)
     )
