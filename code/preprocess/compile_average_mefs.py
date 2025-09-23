@@ -11,8 +11,7 @@ for region in regions:
     basepath = os.path.dirname(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     )  # should be the root of the repo
-    folderpath = os.path.join(basepath, region)
-
+    folderpath = os.path.join(basepath, "data", "MEFs", region)
     month_to_str = {
         1: "Jan",
         2: "Feb",
@@ -80,7 +79,7 @@ for region in regions:
         national_data["isorto"] = region
     else:
         regional_data["isorto"] = region
-        national_data = pd.concat(national_data, regional_data)
+        national_data = pd.concat([national_data, regional_data])
 
 # save national data to CSV
 national_data.to_csv(

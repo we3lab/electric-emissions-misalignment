@@ -40,7 +40,8 @@ def calculate_energy_charge_timeseries(
         charges_present = np.ones(len(load_array))
         charges_present[charge_array != 0] = 0
         num_steps = np.sum(charges_present)
-        result = result + charges_present * cost / num_steps
+        if num_steps > 0:
+            result = result + charges_present * cost / num_steps
 
     return result
 
@@ -64,10 +65,10 @@ def calculate_demand_charge_timeseries(
         cost, _ = calculate_demand_cost(
             charge_array,
             load_array,
-            divisor=4,
             limit=charge_limit,
             next_limit=next_limit,
-            prev_consumption=0,
+            prev_demand=0,
+            prev_demand_cost=0,
             consumption_estimate=consumption_estimate,
         )
 
@@ -142,7 +143,7 @@ for month in range(1, 13):
         tariff_df = pd.read_csv(tariff)
         result = create_monthly_timeseries(tariff_df, month)
         path_prefix = os.path.basename(tariff).split(".")[0]
-        outpath = timeseries_path + path_prefix + "_" + num_month_to_str[month] + ".csv"
+        outpath = os.path.join(timeseries_path, path_prefix + "_" + num_month_to_str[month] + ".csv")
         result.to_csv(outpath, index=False)
 
 tariff_files = glob.glob(timeseries_path + "/*.csv")
