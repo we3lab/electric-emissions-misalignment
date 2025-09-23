@@ -26,10 +26,9 @@ Some data cannot be republished under MIT license, in which case links to the da
 
 ## Data preprocessing
 
-Code for data analysis can be found in `code/preprocess`. The preprocessing code was run in the following order:
+Code for data preprocessing can be found in `code/preprocess`. The preprocessing code was run in the following order:
 
 ```
-cd code/preprocess
 python compile_average_aefs.py
 python compile_average_mefs.py
 python compile_average_dams.py
@@ -39,9 +38,10 @@ python tariff_timeseries.py
 Which creates the following preprocessed data (note that this data has been saved to the repository for posterity, but should be recreated by the scripts exactly):
 
 - `data/AEFs/`: average emission factors (AEFs) averaged by month and hour, with each region having its own CSV file (e.g., `CAISOaef.csv` or `ERCOTaef.csv`)
-- `data/MEFs/average_mefs.csv`: marginal emission factor (MEF) samples as monthly/hourly average timeseries
-- `data/DAMs/`: average day-ahead market (DAM) price as monthly/hourly average timeseries, with each region having its own CSV file (e.g., `CAISOcosts.csv` or `ERCOTcosts.csv`)
-- `data/tariffs/timeseries`: tariffs are converted to timeseries format assuming a 1 MW load for future analysis
+- `data/MEFs/average_mefs.csv`: marginal emission factor (MEF) samples as monthly/hourly average timeseries.
+- `data/DAMs/`: average day-ahead market (DAM) price as monthly/hourly average timeseries, with each region having its own CSV file (e.g., `CAISOcosts.csv` or `ERCOTcosts.csv`).
+  - ***NOTE***: `compile_average_dams.py` will throw an error without data provided by the user since we cannot re-publish the raw DAM data that we collected.
+- `data/tariffs/timeseries`: tariffs are converted to timeseries format assuming a 1 MW load for future analysis.
 
 
 ## Data analysis
@@ -57,6 +57,7 @@ python bay_area_correlation.py
 This should create the following results in the `data` folder:
 
 - `data/correlation`: CSV files of the Pearson correlation coefficient by region for both DAM/MEF and Tariff/AEF.
+  - ***NOTE***: `dam_mef_alignment.py` will throw an error without data provided by the user since we cannot re-publish the raw DAM data that we collected.
 - `bay_area_correlation.py` does not produce any file output, but prints some statistics included in the manuscript and supplementary information.
 
 ## Data visualization
