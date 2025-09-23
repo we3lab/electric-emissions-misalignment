@@ -92,7 +92,9 @@ sf_node_df = pd.read_csv(
     os.path.join(basepath, "data", "geospatial", "iso", "SFLMPLocations.csv")
 )
 iso = gpd.read_file(
-    os.path.join(basepath, "data", "geospatial", "iso", "Independent_System_Operators.shp")
+    os.path.join(
+        basepath, "data", "geospatial", "iso", "Independent_System_Operators.shp"
+    )
 ).astype({"ID": "int64"})
 caiso = iso[iso["NAME"] == "CALIFORNIA INDEPENDENT SYSTEM OPERATOR"]
 # convert CRS to one using meters for scale bar

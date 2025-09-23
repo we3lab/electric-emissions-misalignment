@@ -143,7 +143,9 @@ for month in range(1, 13):
         tariff_df = pd.read_csv(tariff)
         result = create_monthly_timeseries(tariff_df, month)
         path_prefix = os.path.basename(tariff).split(".")[0]
-        outpath = os.path.join(timeseries_path, path_prefix + "_" + num_month_to_str[month] + ".csv")
+        outpath = os.path.join(
+            timeseries_path, path_prefix + "_" + num_month_to_str[month] + ".csv"
+        )
         result.to_csv(outpath, index=False)
 
 tariff_files = glob.glob(timeseries_path + "/*.csv")

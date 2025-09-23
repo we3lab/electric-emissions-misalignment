@@ -27,9 +27,9 @@ for region in regions:
         12: "Dec",
     }
 
-    file = glob.glob(folderpath + "/*.csv")
-    if len(file) != 12:
-        print(len(file))
+    files = glob.glob(folderpath + "/*.csv")
+    if len(files) != 12:
+        print(len(files))
         raise ValueError("There are not 12 files in the folder")
 
     regional_data = pd.DataFrame(columns=["month", "hour", "co2_eq_kg_per_MWh"])
@@ -39,33 +39,41 @@ for region in regions:
         float
     )
 
-    for month in range(1, 13):
-        # grab the file that contains the month
-        for f in file:
-            if month_to_str[month] in f:
-                df = pd.read_csv(f)
-                co2i = df[:24]["sample_0"].values
+    # grab the files that contains the month
+    for f in files:
+        tmp = pd.read_csv(f)
+        # add the month from the local timestamp
+        months = pd.to_datetime(
+            tmp["datetime_local"], format="%Y-%m-%d %H:%M:%S", errors="coerce"
+        ).dt.month.values
+        hours = pd.to_datetime(
+            tmp["datetime_local"], format="%Y-%m-%d %H:%M:%S", errors="coerce"
+        ).dt.hour.values
+        emission_factors = tmp.iloc[:, 1:].mean(
+            axis=1
+        )  # grab all but the datetime column
+        # add to the aggregate dataframe
+        regional_data = pd.concat(
+            [
+                regional_data,
+                pd.DataFrame(
+                    {
+                        "month": months,
+                        "hour": hours,
+                        "co2_eq_kg_per_MWh": emission_factors,
+                    }
+                ),
+            ],
+            ignore_index=True,
+        )
 
-                month_data = np.ones((24, 1)) * month
-                hour_data = np.arange(24)
+    # sort df_aggregate by month
+    regional_data = regional_data.sort_values(
+        by=["month", "hour"], ascending=[True, True], ignore_index=True
+    )
 
-                # append
-                regional_data = pd.concat(
-                    [
-                        regional_data,
-                        pd.DataFrame(
-                            np.hstack(
-                                [
-                                    month_data.reshape(-1, 1),
-                                    hour_data.reshape(-1, 1),
-                                    co2i.reshape(-1, 1),
-                                ]
-                            ),
-                            columns=["month", "hour", "co2_eq_kg_per_MWh"],
-                        ),
-                    ],
-                    axis=0,
-                )
+    # average by month and hour
+    regional_data = regional_data.groupby(["month", "hour"]).mean().reset_index()
 
     # save the data
     regional_data = regional_data.reset_index(drop=True)
