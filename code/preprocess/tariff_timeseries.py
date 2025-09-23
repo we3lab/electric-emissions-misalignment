@@ -8,6 +8,9 @@ from eeco.costs import (
     calculate_demand_cost,
     get_charge_dict,
 )
+import warnings
+
+warnings.simplefilter(action="ignore", category=FutureWarning)
 
 
 def calculate_energy_charge_timeseries(
@@ -38,7 +41,7 @@ def calculate_energy_charge_timeseries(
 
         # divide the charge over the course of a month
         charges_present = np.ones(len(load_array))
-        charges_present[charge_array != 0] = 0
+        charges_present[charge_array == 0] = 0
         num_steps = np.sum(charges_present)
         if num_steps > 0:
             result = result + charges_present * cost / num_steps
@@ -74,7 +77,7 @@ def calculate_demand_charge_timeseries(
 
         # divide the charge over the course of a month when the charge was nonzero
         charges_present = np.ones(len(load_array))
-        charges_present[charge_array != 0] = 0
+        charges_present[charge_array == 0] = 0
         num_steps = np.sum(charges_present)
         if num_steps > 0:
             result = result + charges_present * cost / num_steps
