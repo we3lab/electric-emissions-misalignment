@@ -14,11 +14,11 @@ pip install -r requirements.txt
 Raw data can be found in the `data` folder, when possible. All data used is from 2023.
 Some data cannot be republished under MIT license, in which case links to the data sources are available below:
 
-- *Average emission factors (AEFs)*: collected from United States Energy Information Administration (EIA) [Hourly Electric Grid Monitor](https://www.eia.gov/electricity/gridmonitor/about). Monthly/hourly averaged data available in `data/AEFs` folder, and raw data by ISO is available in subfolders.
-- *Marginal emission factors (MEFs)*: Monthly/hourly averaged data available in `data/MEFs/average_mefs.csv`, with Monte Carlo simulations computed using the method from Siler-Evans et al. [1] available in subfolders.
-- *Electricity tariffs*: `industrial-electricity-tariffs` is updated monthly on [Zenodo](https://doi.org/10.5281/zenodo.16739989) and [GitHub](https://github.com/we3lab/industrial-electricity-tariffs). Archived data applicable to 2023 available in `data/tariffs/processed_sheets` folder.
+- *Average emission factors (AEFs)*: collected from United States Energy Information Administration (EIA) [Hourly Electric Grid Monitor](https://www.eia.gov/electricity/gridmonitor/about) using a method from de Chalendar et al. [1]. Monthly/hourly averaged data available in `data/AEFs` folder, and raw data by ISO is available in subfolders.
+- *Marginal emission factors (MEFs)*: Monthly/hourly averaged data available in `data/MEFs/average_mefs.csv`, with Monte Carlo simulations computed using the method from Siler-Evans et al. [2] available in subfolders.
+- *Electricity tariffs*: `industrial-electricity-tariffs` is updated monthly on [Zenodo](https://doi.org/10.5281/zenodo.16739989) and [GitHub](https://github.com/we3lab/industrial-electricity-tariffs) [3]. Archived data applicable to 2023 available in `data/tariffs/processed_sheets` folder.
 - *Day-ahead market (DAM) prices*: downloaded from [GridStatus](https://gridstatus.io/). Raw historical data not available for re-publication. Monthly/hourly averages are saved to the `data/DAMs` folder with columns `month`, `hour`, and `USD_per_MWh`
-- *Incentive-based demand response (IBDR)*: the Incentive Demand Response Program Parameter (IDroPP) dataset is available from the [Stanford Digital Repository as ["US incentive based demand response program parameters"](https://doi.org/10.25740/ck480bd0124). Data relevant to our analysis copied to `data/IBDR` folder.
+- *Incentive-based demand response (IBDR)*: the Incentive Demand Response Program Parameter (IDroPP) dataset is available from the [Stanford Digital Repository as ["US incentive based demand response program parameters"](https://doi.org/10.25740/ck480bd0124) [4]. Data relevant to our analysis copied to `data/IBDR` folder.
 - *Geospatial data*: 
     - Census boundaries for IBDR display from [Census.gov](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html)
     - Independent System Operator (ISO) shapefile from US Department of Homeland Security's [Homeland Infrastructure Foundation-Level Data (HIFLD)](https://hifld-geoplatform.hub.arcgis.com/datasets/50f80920d36e435d9a34db2bd0fd3ad8_0/explore).
@@ -78,4 +78,10 @@ Note that Figure 1 was made outside of Python. Figure 3 will throw an error with
 
 ## References
 
-[1] Siler-Evans, K., Azevedo, I. L., & Morgan, M. G. (2012). Marginal emissions factors for the US electricity system. *Environmental science & technology, 46*(9), 4742-4748. https://doi.org/10.1021/es300145v
+[1] de Chalendar, J. A., Taggart, J., & Benson, S. M. (2019). Tracking emissions in the US electricity system. *Proceedings of the National Academy of Sciences, 116*(51), 25497-25502. https://doi.org/10.1073/pnas.1912950116 
+
+[2] Siler-Evans, K., Azevedo, I. L., & Morgan, M. G. (2012). Marginal emissions factors for the US electricity system. *Environmental science & technology, 46*(9), 4742-4748. https://doi.org/10.1021/es300145v
+
+[3] Chapin, F. T., Rao, A. K., Sakthivelu, A., Chen, C. S., & Mauter, M. S. (2025). *Industrial and Commercial Electricity Tariffs in the United States* (Version 2023.06.01) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.16739989
+
+[4] David, E., Sakthivelu, A., Rao, A. K., & Mauter, M. S. (2024). *US incentive based demand response program parameters* (Version 2) [Data set]. https://doi.org/10.25740/ck480bd0124
