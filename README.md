@@ -74,7 +74,7 @@ python figure6.py
 python supplementary1.py
 ```
 
-Note that Figure 1 was made outside of Python. Figure 3 will throw an error without data provided by the user since we cannot re-publish the raw DAM data that we collected. 
+Note that Figure 1 was made outside of Python. Figures 3, 5, and 6 and Supplmentary Figure 1 will throw errors without data provided by the user since we cannot re-publish the raw DAM data that was used to generate the published figures.
 
 ## References
 
