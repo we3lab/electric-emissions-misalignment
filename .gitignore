@@ -7,3 +7,6 @@
 /data/DAMs/PJM
 /data/DAMs/SPP
 
+# environment-specific files
+.DS_Store
+Pipfile*

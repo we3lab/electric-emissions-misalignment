@@ -59,7 +59,7 @@ corr_data = pd.read_csv(corr_datapath)
 # check the number of na values in the dataframe
 print("Number of NaN values in the dataframe:", corr_data.isna().sum().sum())
 
-dr_datapath = os.path.join("data", "dr", "on_off_peak_prices.csv")
+dr_datapath = os.path.join("data", "IBDR", "on_off_peak_prices.csv")
 dr_data = pd.read_csv(dr_datapath, encoding="latin1")
 
 #################
@@ -314,5 +314,5 @@ for label, axis in zip(labels, ax.flatten()):
         fontsize=10,
     )
 fig_path = os.path.join(basepath, "figures")
-fig.savefig(os.path.join(fig_path, "Figure7.svg"), bbox_inches="tight", dpi=300)
-fig.savefig(os.path.join(fig_path, "Figure7.png"), bbox_inches="tight", dpi=300)
+fig.savefig(os.path.join(fig_path, "Figure6.svg"), bbox_inches="tight", dpi=300)
+fig.savefig(os.path.join(fig_path, "Figure6.png"), bbox_inches="tight", dpi=300)

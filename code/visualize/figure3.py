@@ -396,7 +396,7 @@ for i, r in enumerate(regions):
     # get the lmp for the region
     lmp_file = os.path.join(lmp_path, f"{r}costs.csv")
 
-    if "OTHER" in f:
+    if "OTHER" in lmp_file:
         # skip if the region is not in the filename
         pass
     else:
@@ -476,7 +476,6 @@ metadata_path = os.path.join(
     basepath,
     "data",
     "tariffs",
-    "data",
     "metadata.csv",
 )
 metadata = pd.read_csv(metadata_path)

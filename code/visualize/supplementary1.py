@@ -217,8 +217,8 @@ for label, axis in zip(labels, ax.flatten()):
 
 fig.tight_layout()
 fig_path = os.path.join(basepath, "figures")
-fig.savefig(os.path.join(fig_path, "Figure6.svg"), bbox_inches="tight", dpi=300)
-fig.savefig(os.path.join(fig_path, "Figure6.png"), bbox_inches="tight", dpi=300)
+fig.savefig(os.path.join(fig_path, "Supplementary1.svg"), bbox_inches="tight", dpi=300)
+fig.savefig(os.path.join(fig_path, "Supplementary1.png"), bbox_inches="tight", dpi=300)
 
 ## Add Colorbar
 sm = plt.cm.ScalarMappable(cmap=plt.cm.PiYG, norm=plt.Normalize(vmin=vmin, vmax=vmax))
@@ -232,5 +232,5 @@ cbar = fig.colorbar(
 cbar.set_label("Pearson Correlation Coefficient", rotation=0)
 
 fig.tight_layout()
-fig.savefig(os.path.join(fig_path, "Figure6_cbar.svg"), bbox_inches="tight", dpi=300)
-fig.savefig(os.path.join(fig_path, "Figure6_cbar.png"), bbox_inches="tight", dpi=300)
+fig.savefig(os.path.join(fig_path, "Supplementary1_cbar.svg"), bbox_inches="tight", dpi=300)
+fig.savefig(os.path.join(fig_path, "Supplementary1_cbar.png"), bbox_inches="tight", dpi=300)
