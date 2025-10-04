@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import geopandas as gpd
 import seaborn as sns
 import pandas as pd
+import math
 import os
 
 # change to root of repository
@@ -88,10 +89,13 @@ for region in regions:
         season = month_season_map[month]
         # AEF/tariff correlation
         for index, row in aef_corr_df.iterrows():
-            new_aef_tariff_data["iso"].append(region)
-            new_aef_tariff_data["season"].append(season)
-            new_aef_tariff_data["month"].append(month)
-            new_aef_tariff_data["corr_coef"].append(row[months[month - 1]])
+            if (math.isclose(row[months[month - 1]], 0, abs_tol=1e-8) or pd.isna(row[months[month - 1]])):
+                pass  # zero correlation due to flat tariff
+            else:
+                new_aef_tariff_data["iso"].append(region)
+                new_aef_tariff_data["season"].append(season)
+                new_aef_tariff_data["month"].append(month)
+                new_aef_tariff_data["corr_coef"].append(row[months[month - 1]])
         # MEF/DAM correlation
         for index, row in mef_corr_df[mef_corr_df["month"] == month].iterrows():
             new_mef_dam_data["iso"].append(region)
@@ -143,8 +147,8 @@ for iso in regions:
 sns.heatmap(
     pd.DataFrame(data_dict),
     cbar_kws={"label": "Pearson Correlation Coefficient"},
-    vmin=-0.3,
-    vmax=0.3,
+    vmin=-0.5,
+    vmax=0.5,
     cmap="PRGn",
     ax=ax[0, 1],
 )
@@ -189,8 +193,8 @@ for iso in regions:
 sns.heatmap(
     pd.DataFrame(data_dict),
     cbar_kws={"label": "Pearson Correlation Coefficient"},
-    vmin=-0.3,
-    vmax=0.3,
+    vmin=-0.5,
+    vmax=0.5,
     cmap="PRGn",
     ax=ax[1, 1],
 )

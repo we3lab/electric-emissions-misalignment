@@ -128,10 +128,5 @@ for region in regions:
         else:
             corr_df = pd.merge(corr_df, monthly_df)
 
-    # from https://stackoverflow.com/questions/22649693/drop-rows-with-all-zeros-in-pandas-data-frame  # noqa: E501
-    indices_to_drop = ~(corr_df == 0 | corr_df.isna()).all(axis=1)
-    # remove all rows with no data
-    corr_df.drop = corr_df[~indices_to_drop]
-
     corr_df.set_index("tariff_ids", inplace=True)
     corr_df.to_csv(f"data/correlation/{region}_aef_pearson.csv")

@@ -1,6 +1,5 @@
 import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
-import matplotlib.cm as cm
 import matplotlib as mpl
 import pandas as pd
 import numpy as np
@@ -44,7 +43,7 @@ colors = {
 }
 
 # Create a colormap
-cmap = cm.get_cmap("Set2", len(regions))
+cmap = plt.get_cmap("Set2", len(regions))
 # Create a dictionary to map regions to colors
 # Normalize the colormap to the number of regions
 norm = mcolors.Normalize(vmin=0, vmax=len(regions) - 1)
@@ -99,10 +98,14 @@ for region in regions:
 ax[0].set(
     ylabel="Correlation of\nTariff and AEF",
     xlabel="Peak-to-Off-Peak\nTariff Ratio",
-    xlim=(1, 1025),
+    xlim=(1, 100),
     ylim=(-1, 1),
     xscale="log",
 )
+
+###########
+# Subplot B
+###########
 
 ax[1].set(
     xlabel="Demand Response Price ($/kW)",
@@ -110,11 +113,6 @@ ax[1].set(
     ylim=(-1, 1),
     xlim=(0, 250),
 )
-
-###########
-# Subplot B
-###########
-
 ax[1].hlines(0, xmin=0, xmax=250, color="black", lw=2, ls="--")
 
 for region in regions:
@@ -172,9 +170,11 @@ for region in regions:
     region_corr = corr_data[corr_data["region"] == region]
 
     # filter winter and summer correlation data
-    winter_region_corr = region_corr[corr_data["month"] < 5]
-    winter_region_corr = region_corr[corr_data["month"] >= 11]["tariff_ratio"].dropna()
-    summer_region_corr = region_corr[corr_data["month"] >= 5]
+    winter_region_corr = region_corr[region_corr["month"] < 5]
+    winter_region_corr = winter_region_corr[winter_region_corr["month"] >= 11][
+        "tariff_ratio"
+    ].dropna()
+    summer_region_corr = region_corr[region_corr["month"] >= 5]
     summer_region_corr = summer_region_corr[summer_region_corr["month"] < 11][
         "tariff_ratio"
     ].dropna()
@@ -186,12 +186,12 @@ for region in regions:
 
     pts = []
     for w_dr in winter_region_dr:
-        for wc in winter_region_corr:
-            pts.append([w_dr, wc])
+        for w_ratio in winter_region_corr:
+            pts.append([w_dr, w_ratio])
 
     for s_dr in summer_region_dr:
-        for sc in summer_region_corr:
-            pts.append([s_dr, sc])
+        for s_ratio in summer_region_corr:
+            pts.append([s_dr, s_ratio])
 
     pts = np.array(pts)
 
@@ -203,6 +203,7 @@ for region in regions:
         f"Region: {region}, Anchor Point: {anchor_point}, Width: {width}, Height: {height}"
     )
 
+    ax[2].set_yscale("log")
     # create a rectangle patch
     rect = mpl.patches.Rectangle(
         anchor_point,
@@ -219,67 +220,8 @@ for region in regions:
 ax[2].set(
     xlabel="Demand Response Price ($/kW)",
     ylabel="Peak-to-Off-Peak\nTariff Ratio",
-    ylim=(0, 1100),
+    ylim=(0, 100),
     xlim=(0, 250),
-    yscale="log",
-)
-
-# TODO: for some reason this block had to be run twice to have changes reflected in the plot...
-for region in regions:
-    # filter data for the current region
-    region_corr = corr_data[corr_data["region"] == region]
-
-    # filter winter and summer correlation data
-    winter_region_corr = region_corr[corr_data["month"] < 5]
-    winter_region_corr = region_corr[corr_data["month"] >= 11]["tariff_ratio"].dropna()
-    summer_region_corr = region_corr[corr_data["month"] >= 5]
-    summer_region_corr = summer_region_corr[summer_region_corr["month"] < 11][
-        "tariff_ratio"
-    ].dropna()
-
-    # filter demand response data for the current region
-    region_dr_data_df = dr_data[dr_data["iso/rto"] == region]
-    winter_region_dr = region_dr_data_df["w_price"].dropna()
-    summer_region_dr = region_dr_data_df["s_price"].dropna()
-
-    pts = []
-    for w_dr in winter_region_dr:
-        for wc in winter_region_corr:
-            pts.append([w_dr, wc])
-
-    for s_dr in summer_region_dr:
-        for sc in summer_region_corr:
-            pts.append([s_dr, sc])
-
-    pts = np.array(pts)
-
-    anchor_point = (np.min(pts[:, 0]), np.min(pts[:, 1]))
-    width = np.max(pts[:, 0]) - np.min(pts[:, 0])
-    height = np.max(pts[:, 1]) - np.min(pts[:, 1])
-
-    print(
-        f"Region: {region}, Anchor Point: {anchor_point}, Width: {width}, Height: {height}"
-    )
-
-    # create a rectangle patch
-    rect = mpl.patches.Rectangle(
-        anchor_point,
-        width,
-        height,
-        linewidth=1.5,
-        edgecolor=colors[region],
-        facecolor="none",
-        label=region,
-    )
-    # add the patch to the Axes
-    ax[2].add_patch(rect)
-
-ax[2].set(
-    xlabel="Demand Response Price ($/kW)",
-    ylabel="Peak-to-Off-Peak\nTariff Ratio",
-    ylim=(0, 1100),
-    xlim=(0, 250),
-    yscale="log",
 )
 
 #############
