@@ -146,7 +146,6 @@ corr_gdf_a = gpd.GeoDataFrame(
     geometry=gpd.points_from_xy(jan_df.longitude, jan_df.latitude),
     crs=caiso.crs,
 )
-print(corr_gdf_a["pearson_cc"])
 plot_a = corr_gdf_a.plot(
     ax=ax[0],
     column="pearson_cc",
@@ -174,7 +173,6 @@ corr_gdf_b = gpd.GeoDataFrame(
     geometry=gpd.points_from_xy(jul_df.longitude, jul_df.latitude),
     crs=caiso.crs,
 )
-print(corr_gdf_b["pearson_cc"])
 plot_b = corr_gdf_b.plot(
     ax=ax[1],
     column="pearson_cc",

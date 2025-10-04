@@ -458,9 +458,36 @@ for f in tqdm(combined_tariff_files):
 
     for m in months:
         # get the cost data for the month
-        month_data = np.mean(costdata[costdata["Month"] == m]["Cost"].values) / 4
+        month_data = np.mean(costdata[costdata["Month"] == m]["Cost"].values)
         # add the cost data to the dictionary
         region_dict[region][m].append(month_data)
+
+month_mod = np.linspace(-4, 4, 13)
+for i, region in enumerate(regions):
+    for m, data in region_dict[region].items():
+        # check if the month data is empty
+        if len(data) == 0:
+            continue            
+        # remove all nan values from the data
+        month_data = [x for x in data if not np.isnan(x)]
+        # month_data = np.concatenate(data).reshape(-1, 1)
+        ax[3,0].scatter(
+            10*np.ones_like(month_data) * (i+1) + month_mod[m], 
+            month_data, 
+            color=mpl.colors.rgb2hex(cmap(m)), 
+            marker='s',
+            s=2.5,
+            alpha=0.25
+        )
+
+ax[3,0].set_xticks(np.arange(10, 10*(len(regions)+1), 10))
+ax[3,0].set_xticklabels(regions)
+ax[3,0].set(
+    xlim=(5,None),  
+    ylim=(-100, 1200),
+    yticks=np.hstack([np.array([-100]), np.arange(0, 1301, 200)]),
+    ylabel='Time-averaged Tariff Cost\n($/MWh)',
+)
 
 ## Subplot F: DAM vs. Tariff
 tariff_path = os.path.join(

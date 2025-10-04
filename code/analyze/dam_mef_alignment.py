@@ -107,7 +107,7 @@ for _iso in iso_regions:
                     }
                     lmp_data.append(new_row)
             lmp_data = pd.DataFrame(lmp_data)
-        else:
+        else:  # ERCOT
             lmp_data = pd.read_csv(
                 f"data/DAMs/{_iso}/{_iso}_DAM_2023_HOUR.csv", parse_dates=["Time"]
             )

@@ -32,7 +32,7 @@ def calculate_energy_charge_timeseries(
         cost, _ = calculate_energy_cost(
             charge_array,
             load_array,
-            divisor=4,
+            divisor=1,
             limit=charge_limit,
             next_limit=next_limit,
             prev_consumption=0,
@@ -100,19 +100,26 @@ def create_monthly_timeseries(tariff, month, load_kw=1000):
         end_dt = np.datetime64("2024-0" + str(month + 1) + "-01")
 
     # get the charge dictionary
-    charge_dict = get_charge_dict(start_dt, end_dt, tariff, resolution="15m")
+    charge_dict = get_charge_dict(start_dt, end_dt, tariff, resolution="1h")
+    customer_keys = [key for key in charge_dict.keys() if "_customer_" in key]
+    customer_charge = 0
+    for key in customer_keys:
+        customer_charge += charge_dict[key][0]
 
     # define a dummy 1MW flat load
-    datetime_range = pd.date_range(start=start_dt, end=end_dt, freq="15min")
+    datetime_range = pd.date_range(start=start_dt, end=end_dt, freq="1h")
+    scaled_customer_charge = customer_charge / (len(datetime_range) - 1)
     flat_load = np.ones(len(datetime_range) - 1) * load_kw
-    consumption_estimate = np.sum(flat_load) * 0.25
+    consumption_estimate = np.sum(flat_load)
     result = pd.DataFrame()
     result["DateTime"] = datetime_range[:-1]
-    result["Cost"] = calculate_demand_charge_timeseries(
-        tariff, charge_dict, flat_load, consumption_estimate
-    ) + calculate_energy_charge_timeseries(
+    demand_timeseries = calculate_demand_charge_timeseries(
         tariff, charge_dict, flat_load, consumption_estimate
     )
+    energy_timeseries = calculate_energy_charge_timeseries(
+        tariff, charge_dict, flat_load, consumption_estimate
+    )
+    result["Cost"] = demand_timeseries + energy_timeseries + scaled_customer_charge
     return result
 
 

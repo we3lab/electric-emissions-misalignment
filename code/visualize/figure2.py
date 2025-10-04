@@ -52,7 +52,6 @@ shape_dict = dict(zip(regions, shapes))
 
 # month modifier
 month_mod = np.linspace(-4, 4, 12)
-
 f_mef = os.path.join(mef_path, "average_mefs.csv")
 
 for i, r in enumerate(regions):
