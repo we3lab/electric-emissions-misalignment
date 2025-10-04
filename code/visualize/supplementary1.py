@@ -230,5 +230,9 @@ cbar = fig.colorbar(
 cbar.set_label("Pearson Correlation Coefficient", rotation=0)
 
 fig.tight_layout()
-fig.savefig(os.path.join(fig_path, "Supplementary1_cbar.svg"), bbox_inches="tight", dpi=300)
-fig.savefig(os.path.join(fig_path, "Supplementary1_cbar.png"), bbox_inches="tight", dpi=300)
+fig.savefig(
+    os.path.join(fig_path, "Supplementary1_cbar.svg"), bbox_inches="tight", dpi=300
+)
+fig.savefig(
+    os.path.join(fig_path, "Supplementary1_cbar.png"), bbox_inches="tight", dpi=300
+)

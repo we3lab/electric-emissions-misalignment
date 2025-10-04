@@ -122,9 +122,11 @@ for region in regions:
     # filter data for the current region
     region_corr = corr_data[corr_data["region"] == region]
     # filter winter and summer correlation data
-    winter_region_corr = region_corr[corr_data["month"] < 5]
-    winter_region_corr = region_corr[corr_data["month"] >= 11]["pearson_cc"].dropna()
-    summer_region_corr = region_corr[corr_data["month"] >= 5]
+    winter_region_corr = region_corr[region_corr["month"] < 5]
+    winter_region_corr = winter_region_corr[winter_region_corr["month"] >= 11][
+        "pearson_cc"
+    ].dropna()
+    summer_region_corr = region_corr[region_corr["month"] >= 5]
     summer_region_corr = summer_region_corr[summer_region_corr["month"] < 11][
         "pearson_cc"
     ].dropna()
