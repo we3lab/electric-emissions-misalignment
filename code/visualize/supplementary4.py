@@ -32,8 +32,8 @@ plt.rcParams.update(
     }
 )
 
-vmin = -0.3
-vmax = 0.3
+vmin = -0.15
+vmax = 0.15
 
 # locate the data folders
 corr_dir = os.path.join(basepath, "data", "correlation")
@@ -222,7 +222,7 @@ fig.savefig(os.path.join(fig_path, "Supplementary4.png"), bbox_inches="tight", d
 sm = plt.cm.ScalarMappable(cmap=plt.cm.PiYG, norm=plt.Normalize(vmin=vmin, vmax=vmax))
 cbar = fig.colorbar(
     sm,
-    ticks=[-0.3, -0.2, -0.1, 0.0, 0.1, 0.2, 0.3],
+    ticks=[-0.15, -0.075, 0.0, 0.075, 0.15],
     ax=ax[1],
     shrink=0.5,
     orientation="horizontal",

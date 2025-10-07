@@ -9,7 +9,7 @@ basepath = os.path.dirname(
 )  # should be the root of the repo
 
 # locate the data folders
-corr_dir = os.path.join(basepath, "data/correlation")
+corr_dir = os.path.join(basepath, "data", "correlation")
 ca_corr_df = pd.read_csv(os.path.join(corr_dir, "caiso_mef_pearson.csv"))
 sf_node_df = pd.read_csv(
     os.path.join(basepath, "data", "geospatial", "iso", "SFLMPLocations.csv")
@@ -106,3 +106,85 @@ sf_jul_corr_df = corr_gdf_b[
 
 print(sf_jul_corr_df[sf_jul_corr_df["location"] == "ELCRRTO_1_N023"])
 print(sf_jul_corr_df[sf_jul_corr_df["location"] == "GRIZZLY_7_N101"])
+
+#############
+# Nodal Flips
+#############
+def aef_tariff_node_flip(row):
+    if row["Jan"] < 0:
+        if row["Jul"] > 0:
+            return True
+    elif row["Jan"] > 0:
+        if row["Jul"] < 0:
+            return True
+    return False
+
+def mef_dam_node_flip(df, node_id):
+    try:
+        jan_corr = df[(df["location"] == node_id) & (df["month"] == 1)]["pearson_cc"].values[0]
+        jul_corr = df[(df["location"] == node_id) & (df["month"] == 7)]["pearson_cc"].values[0]
+        if jan_corr < 0:
+            if jul_corr > 0:
+                return True
+        elif jan_corr > 0:
+            if jul_corr < 0:
+                return True
+        return False
+    except IndexError:
+        return None
+
+total_flipped = 0
+total_nodes = 0
+
+regions = ["CAISO", "ERCOT", "ISONE", "NYISO", "PJM", "SPP", "MISO"]
+
+for region in regions:
+    aef_corr_df = pd.read_csv(os.path.join(corr_dir, region + "_aef_pearson.csv"))
+    
+    aef_corr_df["Flipped"] = aef_corr_df.apply(aef_tariff_node_flip, axis=1)
+    total_flipped += aef_corr_df["Flipped"].sum()
+    total_nodes += len(aef_corr_df["Flipped"])
+
+    print(f"For {region}, {aef_corr_df['Flipped'].sum()} tariffs flipped of {len(aef_corr_df['Flipped'])} tariffs that flipped")
+    print(f"This is equivalent to {aef_corr_df['Flipped'].sum() / len(aef_corr_df['Flipped']) * 100}%")
+
+print(f"Overall, {total_flipped} tariffs flipped out of {total_nodes} total tariffs")
+print(f"This is equivalent to {total_flipped / total_nodes * 100}%")
+
+total_flipped = 0
+total_nodes = 0
+
+for region in regions:
+    mef_corr_df = pd.read_csv(os.path.join(corr_dir, region + "_mef_pearson.csv"))
+    location_ids = mef_corr_df["location"].unique()
+    region_flipped = 0
+    region_nodes = 0
+    for node_id in location_ids:
+        flipped = mef_dam_node_flip(mef_corr_df, node_id)
+        if flipped is not None:
+            if flipped:
+                region_flipped += 1
+            region_nodes += 1
+
+    total_flipped += region_flipped
+    total_nodes += region_nodes
+
+    print(f"For {region}, there were {region_flipped} of {region_nodes} nodes that flipped")
+    print(f"This is equivalent to {region_flipped / region_nodes * 100}%")
+
+print(f"Overall, there were {total_flipped} of {total_nodes} flipped")
+print(f"This is equivalent to {total_flipped / total_nodes * 100}%")
+
+region_flipped = 0
+region_nodes = 0
+
+mef_corr_df = pd.read_csv(os.path.join(corr_dir, "CAISO_mef_pearson.csv"))
+for node_id in sf_node_df["name"]:
+    flipped = mef_dam_node_flip(mef_corr_df, node_id)
+    if flipped is not None:
+        if flipped:
+            region_flipped += 1
+        region_nodes += 1
+
+print(f"For SF Bay Area, there were {region_flipped} of {region_nodes} nodes that flipped")
+print(f"This is equivalent to {region_flipped / region_nodes * 100}%")
