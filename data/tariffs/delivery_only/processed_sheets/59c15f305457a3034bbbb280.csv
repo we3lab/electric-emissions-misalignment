@@ -1,0 +1,11 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+59c15f305457a3034bbbb280,electric,customer,,,,,,,,,,,38.72,38.72,$/month,https://www.midamericanenergy.com/content/pdf/rates/elecrates/ilelectric/il-elec.pdf	http://www.midamericanenergy.com/rates1.aspx
+59c15f305457a3034bbbb280,electric,demand,,flat,0,0,1,5,0,24,0,6,10.89,10.89,$/kW,adjustment factor of 4.89
+59c15f305457a3034bbbb280,electric,demand,,flat,0,0,6,9,0,24,0,6,10.89,10.89,$/kW,adjustment factor of 4.89
+59c15f305457a3034bbbb280,electric,demand,,flat,0,0,10,12,0,24,0,6,10.89,10.89,$/kW,adjustment factor of 4.89
+59c15f305457a3034bbbb280,electric,energy,,period0,0,0,1,5,0,24,0,4,0.0052,0.0052,$/kWh,
+59c15f305457a3034bbbb280,electric,energy,,period1,0,0,6,9,0,24,0,4,0.0052,0.0052,$/kWh,
+59c15f305457a3034bbbb280,electric,energy,,period0,0,0,10,12,0,24,0,4,0.0052,0.0052,$/kWh,
+59c15f305457a3034bbbb280,electric,energy,,period0,0,0,1,5,0,24,5,6,0.0052,0.0052,$/kWh,
+59c15f305457a3034bbbb280,electric,energy,,period1,0,0,6,9,0,24,5,6,0.0052,0.0052,$/kWh,
+59c15f305457a3034bbbb280,electric,energy,,period0,0,0,10,12,0,24,5,6,0.0052,0.0052,$/kWh,

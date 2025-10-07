@@ -16,7 +16,7 @@ Some data cannot be republished under MIT license, in which case links to the da
 
 - *Average emission factors (AEFs)*: collected from United States Energy Information Administration (EIA) [Hourly Electric Grid Monitor](https://www.eia.gov/electricity/gridmonitor/about) using a method from de Chalendar et al. [1]. Monthly/hourly averaged data available in `data/AEFs` folder, and raw data by ISO is available in subfolders.
 - *Marginal emission factors (MEFs)*: Monthly/hourly averaged data available in `data/MEFs/average_mefs.csv`, with Monte Carlo simulations computed using the method from Siler-Evans et al. [2] available in subfolders.
-- *Electricity tariffs*: `industrial-electricity-tariffs` is updated monthly on [Zenodo](https://doi.org/10.5281/zenodo.16739989) and [GitHub](https://github.com/we3lab/industrial-electricity-tariffs) [3]. Archived data applicable to 2023 available in `data/tariffs/processed_sheets` folder.
+- *Electricity tariffs*: `industrial-electricity-tariffs` is updated monthly on [Zenodo](https://doi.org/10.5281/zenodo.16739989) and [GitHub](https://github.com/we3lab/industrial-electricity-tariffs) [3]. Archived data applicable to 2023 available in `data/tariffs/bundled` and `data/tariffs/delivery_only` folders.
 - *Day-ahead market (DAM) prices*: downloaded from [GridStatus](https://gridstatus.io/). Raw historical data not available for re-publication. Monthly/hourly averages are saved to the `data/DAMs` folder with columns `month`, `hour`, and `USD_per_MWh`
 - *Incentive-based demand response (IBDR)*: the Incentive Demand Response Program Parameter (IDroPP) dataset is available from the [Stanford Digital Repository as ["US incentive based demand response program parameters"](https://doi.org/10.25740/ck480bd0124) [4]. Data relevant to our analysis copied to `data/IBDR` folder.
 - *Geospatial data*: 
@@ -49,6 +49,7 @@ Which creates the following preprocessed data (note that this data has been save
 Code for data analysis can be found in `code/analyze`. The analysis code consists of the following stpes:
 
 ```
+python min_max_emissions.py
 python dam_mef_alignment.py
 python tariff_aef_alignment.py
 python bay_area_correlation.py
@@ -72,6 +73,9 @@ python figure4.py
 python figure5.py
 python figure6.py
 python supplementary1.py
+python supplementary2.py
+python supplementary3.py
+python supplementary4.py
 ```
 
 Note that Figure 1 was made outside of Python. Figures 3, 5, and 6 and Supplmentary Figure 1 will throw errors without data provided by the user since we cannot re-publish the raw DAM data that was used to generate the published figures.

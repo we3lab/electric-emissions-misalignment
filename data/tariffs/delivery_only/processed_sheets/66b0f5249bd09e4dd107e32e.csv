@@ -1,0 +1,14 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+66b0f5249bd09e4dd107e32e,electric,customer,,,,,,,,,,,19.08,19.08,$/month,https://azure-na-assets.contentstack.com/v3/assets/blt407b5f1850a51a1b/blt433389f747df102f/66abca980e7d8cf6403efea7/NJ_Tariff_Section_IV_EFF_6.1.24_3_BGS_and_Combined_UpdateV2_.pdf?branch=prod_alias	https://www.atlanticcityelectric.com/MyAccount/MyBillUsage/Pages/Current-Tariffs.aspx
+66b0f5249bd09e4dd107e32e,electric,demand,,flat,0,0,1,5,0,24,0,6,1.59,1.59,$/kW,adjustment factor of 0.04
+66b0f5249bd09e4dd107e32e,electric,demand,,flat,3.0,3.0,1,5,0,24,0,6,4.87,4.87,$/kW,adjustment factor of 0.04
+66b0f5249bd09e4dd107e32e,electric,demand,,flat,3.0,3.0,6,9,0,24,0,6,2.01,2.01,$/kW,adjustment factor of 0.04
+66b0f5249bd09e4dd107e32e,electric,demand,,flat,3.0,3.0,6,9,0,24,0,6,5.64,5.64,$/kW,adjustment factor of 0.04
+66b0f5249bd09e4dd107e32e,electric,demand,,flat,3.0,3.0,10,12,0,24,0,6,1.59,1.59,$/kW,adjustment factor of 0.04
+66b0f5249bd09e4dd107e32e,electric,demand,,flat,3.0,3.0,10,12,0,24,0,6,4.87,4.87,$/kW,adjustment factor of 0.04
+66b0f5249bd09e4dd107e32e,electric,energy,,period1,0,0,1,5,0,24,0,4,0.07212,0.07212,$/kWh,
+66b0f5249bd09e4dd107e32e,electric,energy,,period0,0,0,6,9,0,24,0,4,0.07296,0.07296,$/kWh,
+66b0f5249bd09e4dd107e32e,electric,energy,,period1,0,0,10,12,0,24,0,4,0.07212,0.07212,$/kWh,
+66b0f5249bd09e4dd107e32e,electric,energy,,period1,0,0,1,5,0,24,5,6,0.07212,0.07212,$/kWh,
+66b0f5249bd09e4dd107e32e,electric,energy,,period0,0,0,6,9,0,24,5,6,0.07296,0.07296,$/kWh,
+66b0f5249bd09e4dd107e32e,electric,energy,,period1,0,0,10,12,0,24,5,6,0.07212,0.07212,$/kWh,

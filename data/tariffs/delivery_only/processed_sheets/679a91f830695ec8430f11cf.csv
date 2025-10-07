@@ -1,0 +1,5 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+679a91f830695ec8430f11cf,electric,customer,,,,,,,,,,,3110.61,3110.61,$/month,https://www.consumersenergy.com/-/media/CE/Documents/rates/electric-rate-book.ashx	https://www.consumersenergy.com/business/rates/electric-rates-and-programs/how-electric-rates-are-set
+679a91f830695ec8430f11cf,electric,demand,,flat,0,0,1,12,0,24,0,6,3.1,3.1,$/kW,
+679a91f830695ec8430f11cf,electric,energy,,period0,0,0,1,12,0,24,0,4,0.05909,0.05909,$/kWh,
+679a91f830695ec8430f11cf,electric,energy,,period0,0,0,1,12,0,24,5,6,0.05909,0.05909,$/kWh,

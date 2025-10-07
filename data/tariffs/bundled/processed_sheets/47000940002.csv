@@ -1,0 +1,90 @@
+label,utility,type,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+47000940002,electric,customer,,,,,,,,,,2005.26,2005.26,$/month,
+,electric,energy,,0,0,1,1,0,4,0,4,0.06318,0.06318,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,1,1,4,10,0,4,0.09011,0.09011,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,1,1,10,24,0,4,0.06318,0.06318,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,2,2,0,4,0,4,0.06229,0.06229,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,2,2,4,10,0,4,0.08922,0.08922,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,2,2,10,24,0,4,0.06229,0.06229,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,3,3,0,4,0,4,0.06303,0.06303,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,3,3,4,10,0,4,0.08996,0.08996,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,3,3,10,24,0,4,0.06303,0.06303,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,4,4,0,13,0,4,0.06806,0.06806,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,4,4,13,19,0,4,0.09499,0.09499,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,4,4,20,24,0,4,0.06806,0.06806,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,5,5,0,13,0,4,0.06476,0.06476,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,5,5,13,19,0,4,0.09169,0.09169,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,5,5,20,24,0,4,0.06476,0.06476,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,6,6,0,13,0,4,0.06484,0.06484,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,6,6,13,19,0,4,0.09177,0.09177,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,6,6,20,24,0,4,0.06484,0.06484,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,7,7,0,13,0,4,0.06663,0.06663,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,7,7,13,19,0,4,0.09356,0.09356,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,7,7,20,24,0,4,0.06663,0.06663,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,8,8,0,13,0,4,0.06634,0.06634,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,8,8,13,19,0,4,0.09327,0.09327,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,8,8,20,24,0,4,0.06634,0.06634,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,9,9,0,13,0,4,0.06557,0.06557,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,9,9,13,19,0,4,0.0925,0.0925,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,9,9,20,24,0,4,0.06557,0.06557,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,10,10,0,13,0,4,0.0466026,0.0466026,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,10,10,13,19,0,4,0.0735326,0.0735326,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,10,10,20,24,0,4,0.0466026,0.0466026,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,11,11,0,4,0,4,0.06973,0.06973,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,11,11,4,10,0,4,0.09666,0.09666,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,11,11,10,24,0,4,0.06973,0.06973,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,12,12,0,4,0,4,0.0715,0.0715,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,12,12,4,10,0,4,0.09843,0.09843,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,12,12,10,24,0,4,0.0715,0.0715,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,1,1,0,24,5,6,0.06318,0.06318,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,2,2,0,24,5,6,0.06229,0.06229,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,3,3,0,24,5,6,0.06303,0.06303,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,4,4,0,24,5,6,0.06806,0.06806,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,5,5,0,24,5,6,0.06476,0.06476,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,6,6,0,24,5,6,0.06484,0.06484,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,7,7,0,24,5,6,0.06663,0.06663,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,8,8,0,24,5,6,0.06634,0.06634,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,9,9,0,24,5,6,0.06557,0.06557,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,10,10,0,24,5,6,0.0466026,0.0466026,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,11,11,0,24,5,6,0.06973,0.06973,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,energy,,0,0,12,12,0,24,5,6,0.0715,0.0715,$/kWh,Includes TVA Fuel Cost Adjustment
+,electric,demand,winter-peak1,0,0,1,3,4,10,0,4,11.74,11.74,$/kW,
+,electric,demand,summer-peak,0,0,4,10,13,19,0,4,11.74,11.74,$/kW,
+,electric,demand,winter-peak2,0,0,11,12,4,10,0,4,11.74,11.74,$/kW,
+,electric,demand,maximum,0,0,1,12,0,24,0,6,5.6,5.6,$/kW,
+,gas,demand,maximum,0,0,1,1,0,24,0,6,18.48,6.526161148,$/therm/hr or $/m3/hr,
+,gas,demand,maximum,0,0,2,2,0,24,0,6,19.608,6.924511244,$/therm/hr or $/m3/hr,
+,gas,demand,maximum,0,0,3,3,0,24,0,6,16.728,5.907447169,$/therm/hr or $/m3/hr,
+,gas,demand,maximum,0,0,4,4,0,24,0,6,15.024,5.305684258,$/therm/hr or $/m3/hr,
+,gas,demand,maximum,0,0,5,5,0,24,0,6,10.32,3.644479602,$/therm/hr or $/m3/hr,
+,gas,demand,maximum,0,0,6,6,0,24,0,6,7.512,2.652842129,$/therm/hr or $/m3/hr,
+,gas,demand,maximum,0,0,7,7,0,24,0,6,8.112,2.864730478,$/therm/hr or $/m3/hr,
+,gas,demand,maximum,0,0,8,8,0,24,0,6,7.848,2.771499604,$/therm/hr or $/m3/hr,
+,gas,demand,maximum,0,0,9,9,0,24,0,6,8.04,2.839303876,$/therm/hr or $/m3/hr,
+,gas,demand,maximum,0,0,10,10,0,24,0,6,7.944,2.80540174,$/therm/hr or $/m3/hr,
+,gas,demand,maximum,0,0,11,11,0,24,0,6,12.216,4.314046785,$/therm/hr or $/m3/hr,
+,gas,demand,maximum,0,0,12,12,0,24,0,6,17.304,6.110859984,$/therm/hr or $/m3/hr,
+,gas,energy,,0,0,1,1,0,24,0,6,0.385,0.135961691,$/therm or $/m3,
+,gas,energy,,200000,566336,1,1,0,24,0,6,0.289,0.102059555,$/therm or $/m3,
+,gas,energy,,0,0,2,2,0,24,0,6,0.365,0.128898746,$/therm or $/m3,
+,gas,energy,,200000,566336,2,2,0,24,0,6,0.269,0.09499661,$/therm or $/m3,
+,gas,energy,,0,0,3,3,0,24,0,6,0.935,0.330192677,$/therm or $/m3,
+,gas,energy,,200000,566336,3,3,0,24,0,6,0.839,0.296290541,$/therm or $/m3,
+,gas,energy,,0,0,4,4,0,24,0,6,0.454,0.160328851,$/therm or $/m3,
+,gas,energy,,200000,566336,4,4,0,24,0,6,0.358,0.126426715,$/therm or $/m3,
+,gas,energy,,0,0,5,5,0,24,0,6,0.357,0.126073568,$/therm or $/m3,
+,gas,energy,,200000,566336,5,5,0,24,0,6,0.261,0.092171432,$/therm or $/m3,
+,gas,energy,,0,0,6,6,0,24,0,6,0.349,0.12324839,$/therm or $/m3,
+,gas,energy,,200000,566336,6,6,0,24,0,6,0.253,0.089346254,$/therm or $/m3,
+,gas,energy,,0,0,7,7,0,24,0,6,0.402,0.141965194,$/therm or $/m3,
+,gas,energy,,200000,566336,7,7,0,24,0,6,0.306,0.108063058,$/therm or $/m3,
+,gas,energy,,0,0,8,8,0,24,0,6,0.503,0.177633066,$/therm or $/m3,
+,gas,energy,,200000,566336,8,8,0,24,0,6,0.407,0.14373093,$/therm or $/m3,
+,gas,energy,,0,0,9,9,0,24,0,6,0.515,0.181870833,$/therm or $/m3,
+,gas,energy,,200000,566336,9,9,0,24,0,6,0.419,0.147968697,$/therm or $/m3,
+,gas,energy,,0,0,10,10,0,24,0,6,0.551,0.194584134,$/therm or $/m3,
+,gas,energy,,200000,566336,10,10,0,24,0,6,0.455,0.160681998,$/therm or $/m3,
+,gas,energy,,0,0,11,11,0,24,0,6,0.57,0.201293932,$/therm or $/m3,
+,gas,energy,,200000,566336,11,11,0,24,0,6,0.474,0.167391796,$/therm or $/m3,
+,gas,energy,,0,0,12,12,0,24,0,6,0.659,0.232724037,$/therm or $/m3,
+,gas,energy,,200000,566336,12,12,0,24,0,6,0.563,0.198821901,$/therm or $/m3,

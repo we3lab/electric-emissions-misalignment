@@ -1,0 +1,7 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+6786b8c2a4c0d769d10f6119,electric,customer,,,,,,,,,,,70.87,70.87,$/month,https://www.michigan.gov/-/media/Project/Websites/mpsc/consumer/rate-books/electric/dte/dtee1cur.pdf?rev=b90295fb8e404a03b41c3202ff456b6b	https://newlook.dteenergy.com/wps/wcm/connect/dte-web/home/service-request/business/pricing/rate-options
+6786b8c2a4c0d769d10f6119,electric,demand,,flat,0,0,1,12,0,24,0,6,6.15,6.15,$/kW,
+6786b8c2a4c0d769d10f6119,electric,demand,,period0,0,0,1,12,0,24,0,4,0.0,0.0,$/kW,
+6786b8c2a4c0d769d10f6119,electric,demand,,period0,0,0,1,12,0,24,5,6,0.0,0.0,$/kW,
+6786b8c2a4c0d769d10f6119,electric,energy,,period0,0,0,1,12,0,24,0,4,0.001687,0.001687,$/kWh,
+6786b8c2a4c0d769d10f6119,electric,energy,,period0,0,0,1,12,0,24,5,6,0.001687,0.001687,$/kWh,

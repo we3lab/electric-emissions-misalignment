@@ -122,14 +122,89 @@ def create_monthly_timeseries(tariff, month, load_kw=1000):
     result["Cost"] = demand_timeseries + energy_timeseries + scaled_customer_charge
     return result
 
-
+#########
+# Bundled
+#########
 # get a list of all the tariffs
 basepath = os.path.dirname(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 )  # should be the root of the repo
-timeseries_path = os.path.join(basepath, "data", "tariffs", "timeseries")
+timeseries_path = os.path.join(basepath, "data", "tariffs", "bundled", "timeseries")
 tariff_list = glob.glob(
-    os.path.join(basepath, "data", "tariffs", "processed_sheets", "*.csv")
+    os.path.join(basepath, "data", "tariffs", "bundled", "processed_sheets", "*.csv")
+)
+
+num_month_to_str = {
+    1: "Jan",
+    2: "Feb",
+    3: "Mar",
+    4: "Apr",
+    5: "May",
+    6: "Jun",
+    7: "Jul",
+    8: "Aug",
+    9: "Sep",
+    10: "Oct",
+    11: "Nov",
+    12: "Dec",
+}
+
+# loop through create_monthly_timeseries for each tariff and month
+for month in range(1, 13):
+    for tariff in tariff_list:
+        tariff_df = pd.read_csv(tariff)
+        result = create_monthly_timeseries(tariff_df, month)
+        path_prefix = os.path.basename(tariff).split(".")[0]
+        outpath = os.path.join(
+            timeseries_path, path_prefix + "_" + num_month_to_str[month] + ".csv"
+        )
+        result.to_csv(outpath, index=False)
+
+tariff_files = glob.glob(timeseries_path + "/*.csv")
+
+# sort through tariff files and group all identical tariff identifiers
+tariff_dict = {}
+for tariff_file in tariff_files:
+    tariff_id = os.path.basename(tariff_file).split("_")[0]
+    if tariff_id not in tariff_dict:
+        tariff_dict[tariff_id] = []
+    tariff_dict[tariff_id].append(tariff_file)
+
+# combine the tariffs in the `data/tariffs/timeseries/combined` folder
+combine_sheets = True
+if combine_sheets:
+    for key, files in tariff_dict.items():
+        combined_df = pd.DataFrame(columns=["Month", "Hour", "Cost"])
+        for f in files:
+            tmp = pd.read_csv(f, parse_dates=["DateTime"])
+            # add a month and hour column to the dataframe
+            tmp["Month"] = tmp["DateTime"].dt.month
+            tmp["Hour"] = tmp["DateTime"].dt.hour
+            # drop the DateTime column
+            tmp = tmp.drop(columns=["DateTime"])
+            # group by month and hour and take the mean cost
+            tmp = tmp.groupby(["Month", "Hour"]).mean().reset_index()
+            # add tmp to combined_df
+            combined_df = pd.concat([combined_df, tmp], ignore_index=True)
+        # sort by month and hour
+        combined_df = combined_df.sort_values(by=["Month", "Hour"]).reset_index(
+            drop=True
+        )
+        # save the combined dataframe to a csv file
+        combined_df.to_csv(
+            os.path.join(timeseries_path, f"combined/tariff_{key}.csv"), index=False
+        )
+
+###############
+# Delivery Only
+###############
+# get a list of all the tariffs
+basepath = os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+)  # should be the root of the repo
+timeseries_path = os.path.join(basepath, "data", "tariffs", "delivery_only", "timeseries")
+tariff_list = glob.glob(
+    os.path.join(basepath, "data", "tariffs", "delivery_only", "processed_sheets", "*.csv")
 )
 
 num_month_to_str = {

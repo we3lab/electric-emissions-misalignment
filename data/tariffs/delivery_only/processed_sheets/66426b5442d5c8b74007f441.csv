@@ -1,0 +1,5 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+66426b5442d5c8b74007f441,electric,customer,,,,,,,,,,,97.0,97.0,$/month,https://www.bge.com/MyAccount/MyBillUsage/Documents/Electric/P3_SCH_GL.pdf	https://www.bge.com/MyAccount/MyBillUsage/Pages/ElectricServiceRatesTariffs.aspx
+66426b5442d5c8b74007f441,electric,demand,,flat,0,0,1,12,0,24,0,6,5.3500000000000005,5.3500000000000005,$/kW,adjustment factor of 0.36
+66426b5442d5c8b74007f441,electric,energy,,period0,0,0,1,12,0,24,0,4,0.027020000000000002,0.027020000000000002,$/kWh,
+66426b5442d5c8b74007f441,electric,energy,,period0,0,0,1,12,0,24,5,6,0.027020000000000002,0.027020000000000002,$/kWh,

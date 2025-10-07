@@ -121,7 +121,7 @@ def calculate_charge_summary(df, datetime_range):
 ## Loop through all tariffs
 # get a list of all the tariffs
 tariff_list = glob.glob(
-    os.path.join(basepath, "data", "tariffs", "processed_sheets", "*.csv")
+    os.path.join(basepath, "data", "tariffs", "bundled", "processed_sheets", "*.csv")
 )
 
 # define a placeholder dataframe to store the results
@@ -357,9 +357,7 @@ tier_matrix = np.zeros((6, 9))
 for index, row in df_charges_summer.iterrows():
     tier_matrix[int(row["demand_tiers"]), int(row["energy_tiers"])] += 1
 
-cax = ax[2, 0].matshow(tier_matrix, cmap="bone_r", vmin=0, vmax=1000)
-
-# fig.colorbar(cax)
+cax = ax[2, 0].matshow(tier_matrix, cmap="bone_r", vmin=0, vmax=1000, aspect='auto')
 
 ax[2, 0].set_xticks(np.arange(0, 4.5, 1))
 ax[2, 0].set_yticks(np.arange(0, 3.5, 1))
@@ -432,7 +430,7 @@ tariff_path = "data/tariffs/timeseries"
 regions = ["CAISO", "ERCOT", "ISONE", "MISO", "NYISO", "PJM", "SPP"]
 
 # get directory of cwd
-metadata_path = os.path.join(basepath, "data", "tariffs", "metadata.csv")
+metadata_path = os.path.join(basepath, "data", "tariffs", "bundled", "metadata.csv")
 metadata = pd.read_csv(metadata_path)
 tariff_gpd = gpd.GeoDataFrame(
     geometry=gpd.points_from_xy(metadata.longitude, metadata.latitude), data=metadata
@@ -480,6 +478,10 @@ for i, region in enumerate(regions):
             alpha=0.25,
         )
 
+# create line for $0 cutoff
+ax[3, 0].hlines(
+    y=0, xmin=3, xmax=10 * (len(fnames_lmp) + 0.5) + 2, color="black", ls="--", lw=2
+)
 ax[3, 0].set_xticks(np.arange(10, 10 * (len(regions) + 1), 10))
 ax[3, 0].set_xticklabels(regions)
 ax[3, 0].set(
@@ -494,6 +496,7 @@ tariff_path = os.path.join(
     basepath,
     "data",
     "tariffs",
+    "bundled",
     "timeseries",
     "combined",
 )
@@ -503,6 +506,7 @@ metadata_path = os.path.join(
     basepath,
     "data",
     "tariffs",
+    "bundled",
     "metadata.csv",
 )
 metadata = pd.read_csv(metadata_path)
@@ -596,15 +600,17 @@ ax[2, 1].scatter(
     edgecolors="k",
     label="Summer Months (May-Oct)",
 )
-ax[2, 1].hlines(1, -2000, 1000, color="k", linestyle="--", linewidth=2)
+subplot_f_min_x = -1500
+subplot_f_max_x = 500
+ax[2, 1].hlines(1, subplot_f_min_x, subplot_f_max_x, color="k", linestyle="--", linewidth=2)
 ax[2, 1].vlines(0, 0.9, 1000, color="k", linestyle="--", linewidth=2)
 ax[2, 1].set(
     xlabel="DAM Peak Price Premium\n(max/min)",
     ylabel="Tariff Peak Charge Premium\n(max/min)",
     yscale="log",
-    xlim=(-1500, 400),
+    xlim=(subplot_f_min_x, subplot_f_max_x),
     xticks=np.arange(-1500, 501, 500),
-    ylim=(0.9, 1000),
+    ylim=(0.9, 100),
 )
 
 ax[2, 1].legend(loc="upper left", frameon=False)

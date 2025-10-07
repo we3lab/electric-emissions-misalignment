@@ -1,0 +1,5 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+6761fc96240b059c240b00b8,electric,customer,,,,,,,,,,,40.76,40.76,$/month,https://www.ameren.com/-/media/rates/files/illinois/2024/aiel8rtpbrr1272024.ashx	https://www.ameren.com/illinois/business/rates/electric-rates
+6761fc96240b059c240b00b8,electric,demand,,flat,0,0,1,12,0,24,0,6,0.59,0.59,$/kW,
+6761fc96240b059c240b00b8,electric,energy,,period0,0,0,1,12,0,24,0,4,0.01245,0.01245,$/kWh,
+6761fc96240b059c240b00b8,electric,energy,,period0,0,0,1,12,0,24,5,6,0.01245,0.01245,$/kWh,

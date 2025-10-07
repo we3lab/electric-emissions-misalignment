@@ -108,13 +108,14 @@ for region in regions:
 # 1-column width = 80 mm
 # 2-column width = 190 mm
 # max height is 240 mm
-fig, ax = plt.subplots(2, 2, figsize=(190 / 25.4, 120 / 25.4))
+fig, ax = plt.subplots(2, 1, figsize=(80 / 25.4, 120 / 25.4))
 
 ## Subplot A
 df = pd.DataFrame(new_aef_tariff_data)
 seasonal_colors = ["#5E9BA1", "#A1645E"]
 bright_seasonal_colors = ["#71bac1", "#c17871"]
 sns.set_palette(bright_seasonal_colors)
+ax[0].axhline(0, linestyle="dotted", color="grey")
 plot_a = sns.violinplot(
     data=df,
     x="iso",
@@ -122,46 +123,22 @@ plot_a = sns.violinplot(
     hue="season",
     linewidth=0.0,
     width=1.0,
-    ax=ax[0, 0],
+    ax=ax[0],
     inner="box",
-    inner_kws={"box_width": 2.0},
+    inner_kws={"box_width": 2.0, "marker": '.', "markersize": 3},
 )
-ax[0, 0].set_xlabel("")
-ax[0, 0].set_ylim(-1, 1)
-ax[0, 0].set_ylabel("Pearson Correlation Coefficient")
+ax[0].set_xlabel("")
+ax[0].set_ylim(-1, 1)
+ax[0].set_ylabel("Pearson Correlation Coefficient")
 # plt.title("AEF vs. Tariffs")
-ax[0, 0].legend(loc="lower right", frameon=False)
-# plt.gca().get_legend().remove()
-ax[0, 0].axhline(0, linestyle="dotted", color="grey")
+ax[0].legend(loc="lower right", frameon=False)
 
 ## Subplot B
-df = pd.DataFrame(new_aef_tariff_data)
-data_dict = {}
-for iso in regions:
-    iso_dict = {}
-    for month in range(12, 0, -1):
-        iso_dict[month] = df[(df["iso"] == iso) & (df["month"] == month)][
-            "corr_coef"
-        ].mean()
-    data_dict[iso] = iso_dict
-sns.heatmap(
-    pd.DataFrame(data_dict),
-    cbar_kws={"label": "Pearson Correlation Coefficient"},
-    vmin=-0.5,
-    vmax=0.5,
-    cmap="PRGn",
-    ax=ax[0, 1],
-)
-ax[0, 1].set_xlabel("")
-ax[0, 1].set_ylabel("Month")
-# ax.set_title("AEF vs. Tariff")
-ax[0, 1].set_xticklabels(ax[0, 1].get_xticklabels(), rotation=0)
-
-## Subplot C
 df = pd.DataFrame(new_mef_dam_data)
 seasonal_colors = ["#5E9BA1", "#A1645E"]
 bright_seasonal_colors = ["#71bac1", "#c17871"]
 sns.set_palette(bright_seasonal_colors)
+ax[1].axhline(0, linestyle="dotted", color="grey")
 plot_c = sns.violinplot(
     data=df,
     x="iso",
@@ -169,42 +146,18 @@ plot_c = sns.violinplot(
     hue="season",
     linewidth=0.0,
     width=1.0,
-    ax=ax[1, 0],
+    ax=ax[1],
     inner="box",
-    inner_kws={"box_width": 2.0},
+    inner_kws={"box_width": 2.0, "marker": '.', "markersize": 3},
 )
-ax[1, 0].set_xlabel("")
-ax[1, 0].set_ylim(-1, 1)
-ax[1, 0].set_ylabel("Pearson Correlation Coefficient")
+ax[1].set_xlabel("")
+ax[1].set_ylim(-1, 1)
+ax[1].set_ylabel("Pearson Correlation Coefficient")
 # plt.title("MEF vs. DAM Prices")
-ax[1, 0].legend(loc="lower right", frameon=False)
-ax[1, 0].axhline(0, linestyle="dotted", color="grey")
-
-## Subplot D
-df = pd.DataFrame(new_mef_dam_data)
-data_dict = {}
-for iso in regions:
-    iso_dict = {}
-    for month in range(12, 0, -1):
-        iso_dict[month] = df[(df["iso"] == iso) & (df["month"] == month)][
-            "corr_coef"
-        ].mean()
-    data_dict[iso] = iso_dict
-sns.heatmap(
-    pd.DataFrame(data_dict),
-    cbar_kws={"label": "Pearson Correlation Coefficient"},
-    vmin=-0.5,
-    vmax=0.5,
-    cmap="PRGn",
-    ax=ax[1, 1],
-)
-ax[1, 1].set_xlabel("")
-ax[1, 1].set_ylabel("Month")
-# ax.set_title("MEF vs. DAM")
-ax[1, 1].set_xticklabels(ax[1, 1].get_xticklabels(), rotation=0)
+ax[1].legend(loc="lower right", frameon=False)
 
 ## Save Outputs
-labels = ["a.", "b.", "c.", "d."]
+labels = ["a.", "b."]
 
 # from https://matplotlib.org/stable/gallery/text_labels_and_annotations/label_subplots.html
 for label, axis in zip(labels, ax.flatten()):
@@ -217,7 +170,7 @@ for label, axis in zip(labels, ax.flatten()):
         1.0,
         label,
         transform=(
-            axis.transAxes + ScaledTranslation(-32 / 72, 0, fig.dpi_scale_trans)
+            axis.transAxes + ScaledTranslation(-36 / 72, 0, fig.dpi_scale_trans)
         ),
         va="bottom",
         fontsize=10,

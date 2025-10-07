@@ -44,7 +44,7 @@ def get_sample_tariff_data(
     return corr_coefs, filtered_tariff_ids
 
 
-tariff_path = os.path.join(basepath, "data", "tariffs", "timeseries")
+tariff_path = os.path.join(basepath, "data", "tariffs", "bundled", "timeseries")
 tariff_files = glob.glob(tariff_path + "/*.csv")
 
 # sort through tariff files split _[1] and group all identical tariff identifiers
@@ -55,7 +55,7 @@ for tariff_file in tariff_files:
         tariff_dict[tariff_id] = []
     tariff_dict[tariff_id].append(tariff_file)
 
-metadata_path = os.path.join(basepath, "data", "tariffs", "metadata.csv")
+metadata_path = os.path.join(basepath, "data", "tariffs", "bundled", "metadata.csv")
 metadata = pd.read_csv(metadata_path)
 
 months = [

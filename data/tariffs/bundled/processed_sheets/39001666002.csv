@@ -1,0 +1,25 @@
+label,utility,type,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+39001666002,electric,customer,,,,,,,,,,150,150,$/month,
+,electric,demand,maximum,0,0,1,12,0,24,0,6,3.1365,3.1365,$/kW,Includes Delivery Capital Recovery Rider
+,electric,energy,,0,0,1,5,0,6,0,4,0.038788,0.038788,$/kWh,"Includes Riders GCR, TSA, GEN, and Fuel"
+,electric,energy,,0,0,1,5,6,12,0,4,0.051719,0.051719,$/kWh,Time-of-day option selected for Rider GEN
+,electric,energy,,0,0,1,5,12,18,0,4,0.063071,0.063071,$/kWh,
+,electric,energy,,0,0,1,5,18,22,0,4,0.051719,0.051719,$/kWh,
+,electric,energy,,0,0,1,5,22,24,0,4,0.038788,0.038788,$/kWh,
+,electric,energy,,0,0,6,8,0,6,0,4,0.045877,0.045877,$/kWh,
+,electric,energy,,0,0,6,8,6,12,0,4,0.055368,0.055368,$/kWh,
+,electric,energy,,0,0,6,8,12,18,0,4,0.077251,0.077251,$/kWh,
+,electric,energy,,0,0,6,8,18,22,0,4,0.055368,0.055368,$/kWh,
+,electric,energy,,0,0,6,8,22,24,0,4,0.045877,0.045877,$/kWh,
+,electric,energy,,0,0,9,12,0,6,0,4,0.038788,0.038788,$/kWh,
+,electric,energy,,0,0,9,12,6,12,0,4,0.051719,0.051719,$/kWh,
+,electric,energy,,0,0,9,12,12,18,0,4,0.063071,0.063071,$/kWh,
+,electric,energy,,0,0,9,12,18,22,0,4,0.051719,0.051719,$/kWh,
+,electric,energy,,0,0,9,12,22,24,0,4,0.038788,0.038788,$/kWh,
+,electric,energy,,0,0,1,5,0,24,5,6,0.038788,0.038788,$/kWh,
+,electric,energy,,0,0,6,8,0,24,5,6,0.045877,0.045877,$/kWh,
+,electric,energy,,0,0,9,12,0,24,5,6,0.038788,0.038788,$/kWh,
+,gas,customer,,,,,,,,,,60,60,$/month,
+,gas,energy,,0,0,1,12,0,24,0,6,0.66027001,0.233172537,$/therm or $/m3,
+,gas,energy,,1037,2936.45216,1,12,0,24,0,6,0.633269045,0.223637221,$/therm or $/m3,
+,gas,energy,,5185,14682.2608,1,12,0,24,0,6,0.618804243,0.218529016,$/therm or $/m3,

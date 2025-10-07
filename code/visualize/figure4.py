@@ -237,7 +237,7 @@ for label, axis in zip(labels, ax):
         1.0,
         label,
         transform=(
-            axis.transAxes + ScaledTranslation(-6 / 72, -12 / 72, fig.dpi_scale_trans)
+            axis.transAxes + ScaledTranslation(-18 / 72, -12 / 72, fig.dpi_scale_trans)
         ),
         va="bottom",
         fontsize=10,
@@ -408,7 +408,7 @@ for label, axis in zip(labels, ax.flatten()):
         1.0,
         label,
         transform=(
-            axis.transAxes + ScaledTranslation(-24 / 72, 12 / 72, fig.dpi_scale_trans)
+            axis.transAxes + ScaledTranslation(-36 / 72, 0 / 72, fig.dpi_scale_trans)
         ),
         va="bottom",
         fontsize=10,

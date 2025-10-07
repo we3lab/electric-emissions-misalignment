@@ -1,0 +1,25 @@
+label,utility,type,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+36008024001,electric,customer,,,,,,,,,,349.93,349.93,$/month,
+,electric,energy,,0,0,1,1,0,24,0,6,0.035741,0.035741,$/kWh,Monthly average of commodity price
+,electric,energy,,0,0,2,2,0,24,0,6,0.025127,0.025127,$/kWh,Monthly average of commodity price
+,electric,energy,,0,0,3,3,0,24,0,6,0.029666,0.029666,$/kWh,Monthly average of commodity price
+,electric,energy,,0,0,4,4,0,24,0,6,0.032384,0.032384,$/kWh,Monthly average of commodity price
+,electric,energy,,0,0,5,5,0,24,0,6,0.049126,0.049126,$/kWh,Monthly average of commodity price
+,electric,energy,,0,0,6,6,0,24,0,6,0.023806,0.023806,$/kWh,Monthly average of commodity price
+,electric,energy,,0,0,7,7,0,24,0,6,0.020728,0.020728,$/kWh,Monthly average of commodity price
+,electric,energy,,0,0,8,8,0,24,0,6,0.050803,0.050803,$/kWh,Monthly average of commodity price
+,electric,energy,,0,0,9,9,0,24,0,6,0.053536,0.053536,$/kWh,Monthly average of commodity price
+,electric,energy,,0,0,10,10,0,24,0,6,0.058411,0.058411,$/kWh,Monthly average of commodity price
+,electric,energy,,0,0,11,11,0,24,0,6,0.068364,0.068364,$/kWh,Monthly average of commodity price
+,electric,energy,,0,0,12,12,0,24,0,6,0.064587,0.064587,$/kWh,Monthly average of commodity price
+,electric,demand,maximum,0,0,1,12,0,24,0,6,17.05,17.05,$/kW,Includes high voltage discount
+,gas,energy,,0,0,1,4,0,24,0,6,16.718101,5.903951365,$/therm or $/m3,Average of commodity price
+,gas,energy,,3,8.49504,1,4,0,24,0,6,0.704921,0.248940911,$/therm or $/m3,Average of commodity price
+,gas,energy,,100,283.168,1,4,0,24,0,6,0.685461,0.242068666,$/therm or $/m3,Average of commodity price
+,gas,energy,,500,1415.84,1,4,0,24,0,6,0.656421,0.23181327,$/therm or $/m3,Average of commodity price
+,gas,energy,,1000,2831.68,1,4,0,24,0,6,0.519591,0.183492132,$/therm or $/m3,Average of commodity price
+,gas,energy,,0,0,5,12,0,24,0,6,17.718101,6.257098613,$/therm or $/m3,Average of commodity price
+,gas,energy,,3,8.49504,5,12,0,24,0,6,0.694541,0.245275243,$/therm or $/m3,Average of commodity price
+,gas,energy,,100,283.168,5,12,0,24,0,6,0.675781,0.238650201,$/therm or $/m3,Average of commodity price
+,gas,energy,,500,1415.84,5,12,0,24,0,6,0.647791,0.228765609,$/therm or $/m3,Average of commodity price
+,gas,energy,,1000,2831.68,5,12,0,24,0,6,0.515921,0.182196081,$/therm or $/m3,Average of commodity price

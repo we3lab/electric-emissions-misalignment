@@ -1,0 +1,6 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+5d8d0c035457a334621dcd3f,electric,customer,,,,,,,,,,,814.8,814.8,$/month,https://www2.dps.ny.gov/ETS/jobs/display/download/6262624.pdf	https://www2.dps.ny.gov/ETS/search/searchShortcutEffectiveAction.cfm?M%3FIW%3F!ZQOH%25NL%40LNR%3C%2BR%3F%2BXTWD8AM%3F%263%40JZ%3E%3EME*OC9%3E4J%292TH!J%3EH*K%3D%26%28VP%0AMLF^GL*_%25AKO%2BS^H%3BQO_.%23\-D4%3B%2F%2FO%20*VBMFR4K%3BHJ%3A%22%26LEZ[EA642!2%3E%24%3B%3E.%0AMM5%26[D%28\%2CWG%26][I.!_XNPV95%22B7%3F%3DL%28*88%25FCK%3EZM%27\\4K9Z\I%3AG9IJJ8VK%22%3A%0AH%26%22Z\6%29VRC%26%3EDF3%3F%3AJ%26%3AM]UF2GWR%2C\L%22H2U%2C5M9R_%3C7X^O%40QROL%28!H%20%20%20%0A
+5d8d0c035457a334621dcd3f,electric,demand,,flat,0,0,1,12,0,24,0,6,0.26,0.26,$/kW,adjustment factor of 0.26
+5d8d0c035457a334621dcd3f,electric,demand,,flat,40.0,40.0,1,12,0,24,0,6,10.879999999999999,10.879999999999999,$/kW,adjustment factor of 0.26
+5d8d0c035457a334621dcd3f,electric,energy,,period0,0,0,1,12,0,24,0,4,0.006798,0.006798,$/kWh,
+5d8d0c035457a334621dcd3f,electric,energy,,period0,0,0,1,12,0,24,5,6,0.006798,0.006798,$/kWh,

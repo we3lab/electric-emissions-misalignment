@@ -28,10 +28,10 @@ months = [
 basepath = os.path.dirname(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 )  # should be the root of the repo
-tariff_path = os.path.join(basepath, "data", "tariffs", "timeseries", "combined")
+tariff_path = os.path.join(basepath, "data", "tariffs", "bundled", "timeseries", "combined")
 tariff_files = glob.glob(tariff_path + "/*.csv")
 
-metadata_path = os.path.join(basepath, "data", "tariffs", "metadata.csv")
+metadata_path = os.path.join(basepath, "data", "tariffs", "bundled", "metadata.csv")
 metadata_df = pd.read_csv(metadata_path)
 
 for tariff_file in tariff_files:

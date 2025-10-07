@@ -1,0 +1,7 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+678aa86c9ea5d869130878f1,electric,customer,,,,,,,,,,,2038.02,2038.02,$/month,https://nj.pseg.com/-/media/pseg/public-site/documents/current-electric-tariff/electric-tariff-17-gprc-effective-20250101.ashx	https://nj.pseg.com/aboutpseg/regulatorypage/electrictariffs
+678aa86c9ea5d869130878f1,electric,demand,,flat,0,0,1,5,0,24,0,6,1.7297,1.7297,$/kW,
+678aa86c9ea5d869130878f1,electric,demand,,flat,0,0,6,9,0,24,0,6,6.2525,6.2525,$/kW,
+678aa86c9ea5d869130878f1,electric,demand,,flat,0,0,10,12,0,24,0,6,1.7297,1.7297,$/kW,
+678aa86c9ea5d869130878f1,electric,energy,,period0,0,0,1,12,0,24,0,4,0.021374,0.021374,$/kWh,
+678aa86c9ea5d869130878f1,electric,energy,,period0,0,0,1,12,0,24,5,6,0.021374,0.021374,$/kWh,

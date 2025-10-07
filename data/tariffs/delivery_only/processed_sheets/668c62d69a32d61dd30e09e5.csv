@@ -1,0 +1,9 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+668c62d69a32d61dd30e09e5,electric,customer,,,,,,,,,,,339.01,339.01,$/month,https://www.pacificpower.net/content/dam/pcorp/documents/en/pacificpower/rates-regulation/oregon/tariffs/rates/730_General_Service_Large_Nonresidential_201_KW_to_999_KW_Direct_Access_Delivery_Service.pdf	https://www.pacificpower.net/about/rates-regulation/oregon-rates-tariffs.html
+668c62d69a32d61dd30e09e5,electric,demand,,flat,0,0,1,12,0,24,0,6,4.4761500000000005,4.4761500000000005,$/kW,adjustment factor of 0.06615
+668c62d69a32d61dd30e09e5,electric,energy,,period0,0,0,1,12,0,24,0,4,0.02894,0.02894,$/kWh,
+668c62d69a32d61dd30e09e5,electric,energy,,period0,724638.0,724638.0,1,12,0,24,0,4,0.02204,0.02204,$/kWh,
+668c62d69a32d61dd30e09e5,electric,energy,,period0,5000000.0,5000000.0,1,12,0,24,0,4,0.01926,0.01926,$/kWh,
+668c62d69a32d61dd30e09e5,electric,energy,,period0,0,0,1,12,0,24,5,6,0.02894,0.02894,$/kWh,
+668c62d69a32d61dd30e09e5,electric,energy,,period0,724638.0,724638.0,1,12,0,24,5,6,0.02204,0.02204,$/kWh,
+668c62d69a32d61dd30e09e5,electric,energy,,period0,5000000.0,5000000.0,1,12,0,24,5,6,0.01926,0.01926,$/kWh,

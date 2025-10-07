@@ -1,0 +1,12 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+5cdd73825457a3473340c5d1,electric,customer,,,,,,,,,,,47.83,47.83,$/month,https://www.emeramaine.com/media/49275/Rate_D4_PrimPowerLarge.pdf	https://www.emeramaine.com/residential/rates/rates-schedules/
+5cdd73825457a3473340c5d1,electric,demand,,period2,0,0,1,12,0,7,0,4,1.75,1.75,$/kW,
+5cdd73825457a3473340c5d1,electric,demand,,period0,0,0,1,12,7,12,0,4,15.92,15.92,$/kW,
+5cdd73825457a3473340c5d1,electric,demand,,period1,0,0,1,12,12,16,0,4,3.4,3.4,$/kW,
+5cdd73825457a3473340c5d1,electric,demand,,period0,0,0,1,12,16,20,0,4,15.92,15.92,$/kW,
+5cdd73825457a3473340c5d1,electric,demand,,period2,0,0,1,12,20,24,0,4,1.75,1.75,$/kW,
+5cdd73825457a3473340c5d1,electric,demand,,period2,0,0,1,12,0,7,5,6,1.75,1.75,$/kW,
+5cdd73825457a3473340c5d1,electric,demand,,period1,0,0,1,12,7,20,5,6,3.4,3.4,$/kW,
+5cdd73825457a3473340c5d1,electric,demand,,period2,0,0,1,12,20,24,5,6,1.75,1.75,$/kW,
+5cdd73825457a3473340c5d1,electric,energy,,period0,0,0,1,12,0,24,0,4,0.00582,0.00582,$/kWh,
+5cdd73825457a3473340c5d1,electric,energy,,period0,0,0,1,12,0,24,5,6,0.00582,0.00582,$/kWh,

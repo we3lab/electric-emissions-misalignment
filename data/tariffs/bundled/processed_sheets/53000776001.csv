@@ -1,0 +1,8 @@
+label,utility,type,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+53000776001,electric,customer,,,,,,,,,,358.11,358.11,$/month,
+,electric,demand,winter1,0,0,1,3,0,24,0,6,12.56,12.56,$/kW,
+,electric,demand,summer,0,0,4,9,0,24,0,6,8.48,8.48,$/kW,
+,electric,demand,winter2,0,0,10,12,0,24,0,6,12.56,12.56,$/kW,
+,electric,energy,,0,0,1,12,0,24,0,6,0.070949,0.070949,$/kWh,
+,gas,customer,,,,,,,,,,33.84,33.84,$/month,
+,gas,energy,,0,0,1,12,0,24,0,6,0.91728,0.323934908,$/therm or $/m3,

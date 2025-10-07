@@ -1,0 +1,7 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+6696cd068e2f6213880ab69f,electric,customer,,,,,,,,,,,311.66,311.66,$/month,https://azure-na-assets.contentstack.com/v3/assets/bltbb7c204688a1a6a8/blt1592c0ff5185f738/664f4f5c65c997000d8700fb/Current_-_clean_PCA_Filing_eff_May_13_2024_5.23.24.pdf?branch=prod_alias	https://www.pepco.com/MyAccount/MyBillUsage/Pages/DC/CurrentTariffsDC.aspx
+6696cd068e2f6213880ab69f,electric,demand,,flat,0,0,1,5,0,24,0,6,2.31,2.31,$/kW,
+6696cd068e2f6213880ab69f,electric,demand,,flat,0,0,6,10,0,24,0,6,2.15,2.15,$/kW,
+6696cd068e2f6213880ab69f,electric,demand,,flat,0,0,11,12,0,24,0,6,2.31,2.31,$/kW,
+6696cd068e2f6213880ab69f,electric,energy,,period0,0,0,1,12,0,24,0,4,0.01526,0.01526,$/kWh,
+6696cd068e2f6213880ab69f,electric,energy,,period0,0,0,1,12,0,24,5,6,0.01526,0.01526,$/kWh,

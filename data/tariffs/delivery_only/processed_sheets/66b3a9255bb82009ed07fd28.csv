@@ -1,0 +1,5 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+66b3a9255bb82009ed07fd28,electric,customer,,,,,,,,,,,244.46,244.46,$/month,https://azure-na-assets.contentstack.com/v3/assets/blt47b6e332b18fb457/blt62f3e22e86bbad0a/66968a9509616b438abb4b2a/2024.06.26_filing_DPL_DE_Electric_Primary_tar.pdf?branch=prod_alias	https://www.delmarva.com/my-account/my-dashboard/rates-tariffs/delaware-electric/current-tariffs
+66b3a9255bb82009ed07fd28,electric,demand,,flat,0,0,1,12,0,24,0,6,6.999652,6.999652,$/kW,adjustment factor of -0.249248
+66b3a9255bb82009ed07fd28,electric,energy,,period0,0,0,1,12,0,24,0,4,0.03682,0.03682,$/kWh,
+66b3a9255bb82009ed07fd28,electric,energy,,period0,0,0,1,12,0,24,5,6,0.03682,0.03682,$/kWh,
