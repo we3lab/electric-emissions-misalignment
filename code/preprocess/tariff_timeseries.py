@@ -170,7 +170,7 @@ for tariff_file in tariff_files:
         tariff_dict[tariff_id] = []
     tariff_dict[tariff_id].append(tariff_file)
 
-# combine the tariffs in the `data/tariffs/timeseries/combined` folder
+# combine the tariffs in the `combined` folder
 combine_sheets = True
 if combine_sheets:
     for key, files in tariff_dict.items():
@@ -243,7 +243,7 @@ for tariff_file in tariff_files:
         tariff_dict[tariff_id] = []
     tariff_dict[tariff_id].append(tariff_file)
 
-# combine the tariffs in the `data/tariffs/timeseries/combined` folder
+# combine the tariffs in the `combined` folder
 combine_sheets = True
 if combine_sheets:
     for key, files in tariff_dict.items():

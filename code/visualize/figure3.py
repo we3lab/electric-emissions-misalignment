@@ -150,15 +150,15 @@ for tariff in tariff_list:
     df = pd.read_csv(tariff)
 
     # try to calculate and append the charge summary for summer and winter separately
-    # try:
-    charge_summary = calculate_charge_summary(df, summer_daterange)
-    df_charges_summer = pd.concat(
-        [df_charges_summer, pd.DataFrame(charge_summary, index=[tariff])],
-        ignore_index=True,
-    )
-    # except:
-    #     print("Failure for tariff:", tariff)
-    #     pass
+    try:
+        charge_summary = calculate_charge_summary(df, summer_daterange)
+        df_charges_summer = pd.concat(
+            [df_charges_summer, pd.DataFrame(charge_summary, index=[tariff])],
+            ignore_index=True,
+        )
+    except:
+        print("Failure for tariff:", tariff)
+        pass
     try:
         charge_summary = calculate_charge_summary(df, winter_daterange)
         df_charges_winter = pd.concat(
@@ -426,7 +426,15 @@ ax[3, 1].set(
 )
 
 ## Subplot G: Time-averaged Tariff
-tariff_path = "data/tariffs/timeseries"
+tariff_path = os.path.join(
+    basepath,
+    "data",
+    "tariffs",
+    "bundled",
+    "timeseries",
+    "combined",
+)
+timeseries_fps = glob.glob(tariff_path + "/*.csv")
 regions = ["CAISO", "ERCOT", "ISONE", "MISO", "NYISO", "PJM", "SPP"]
 
 # get directory of cwd
@@ -436,15 +444,13 @@ tariff_gpd = gpd.GeoDataFrame(
     geometry=gpd.points_from_xy(metadata.longitude, metadata.latitude), data=metadata
 )
 
-combined_tariff_files = glob.glob(os.path.join(basepath, tariff_path, "combined/*.csv"))
-
 months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 # create a dictionary with regions as keys
 region_dict = {region: {m: [] for m in months} for region in regions}
-
-for f in tqdm(combined_tariff_files):
-    tariff_id = f.split("_")[1].split(".")[0]
+num_hyphens = tariff_path.count("_")
+for f in tqdm(timeseries_fps):
+    tariff_id = f.split("_")[1 + num_hyphens].split(".")[0]
     costdata = pd.read_csv(f)
 
     # get the region from the tariff_gpd dataframe
@@ -459,6 +465,11 @@ for f in tqdm(combined_tariff_files):
         month_data = np.mean(costdata[costdata["Month"] == m]["Cost"].values)
         # add the cost data to the dictionary
         region_dict[region][m].append(month_data)
+
+# create line for $0 cutoff
+ax[3, 0].hlines(
+    y=0, xmin=3, xmax=10 * (len(regions) + 0.5) + 2, color="black", ls="--", lw=2
+)
 
 month_mod = np.linspace(-4, 4, 13)
 for i, region in enumerate(regions):
@@ -478,30 +489,16 @@ for i, region in enumerate(regions):
             alpha=0.25,
         )
 
-# create line for $0 cutoff
-ax[3, 0].hlines(
-    y=0, xmin=3, xmax=10 * (len(fnames_lmp) + 0.5) + 2, color="black", ls="--", lw=2
-)
-ax[3, 0].set_xticks(np.arange(10, 10 * (len(regions) + 1), 10))
+ax[3, 0].set_xticks(10 * np.arange(1, len(regions) + 1))
 ax[3, 0].set_xticklabels(regions)
 ax[3, 0].set(
-    xlim=(5, None),
+    xlim=(3, 10 * (len(regions) + 0.5) + 2),
     ylim=(-100, 1200),
     yticks=np.hstack([np.array([-100]), np.arange(0, 1301, 200)]),
     ylabel="Time-averaged Tariff Cost\n($/MWh)",
 )
 
 ## Subplot F: DAM vs. Tariff
-tariff_path = os.path.join(
-    basepath,
-    "data",
-    "tariffs",
-    "bundled",
-    "timeseries",
-    "combined",
-)
-timeseries_fps = glob.glob(tariff_path + "/*.csv")
-
 metadata_path = os.path.join(
     basepath,
     "data",
@@ -613,7 +610,8 @@ ax[2, 1].set(
     ylim=(0.9, 100),
 )
 
-ax[2, 1].legend(loc="upper left", frameon=False)
+# Comment out this legend to create it and move it below the plot manually
+# ax[2, 1].legend(loc="upper left", frameon=False)
 
 ## Save Output
 labels = ["a.", "b.", "c.", "d.", "e.", "f.", "g.", "h."]

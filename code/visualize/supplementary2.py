@@ -150,15 +150,15 @@ for tariff in tariff_list:
     df = pd.read_csv(tariff)
 
     # try to calculate and append the charge summary for summer and winter separately
-    # try:
-    charge_summary = calculate_charge_summary(df, summer_daterange)
-    df_charges_summer = pd.concat(
-        [df_charges_summer, pd.DataFrame(charge_summary, index=[tariff])],
-        ignore_index=True,
-    )
-    # except:
-    #     print("Failure for tariff:", tariff)
-    #     pass
+    try:
+        charge_summary = calculate_charge_summary(df, summer_daterange)
+        df_charges_summer = pd.concat(
+            [df_charges_summer, pd.DataFrame(charge_summary, index=[tariff])],
+            ignore_index=True,
+        )
+    except:
+        print("Failure for tariff:", tariff)
+        pass
     try:
         charge_summary = calculate_charge_summary(df, winter_daterange)
         df_charges_winter = pd.concat(
@@ -209,9 +209,9 @@ energy_ratio_99 = np.round(df_charges_summer["energy_charge_ratio"].quantile(0.9
 
 ax_inset.set(
     # xlim=np.round((0, mean_energy_99),3),
-    xlim=np.round((0, 0.5), 3),
-    # xticks=np.arange(0, mean_energy_99*1.01, 0.2),
-    xticks=np.arange(0, 0.6, 0.25),
+    xlim=(0, 0.4),
+    # xticks=np.arange(0, 0.6, 0.25),
+    xticks=[0, 0.2, 0.4],
     ylim=(1, energy_ratio_99),
     yticks=np.arange(1, energy_ratio_99 + 1, 1),
 )
@@ -250,9 +250,9 @@ energy_ratio_99 = np.round(df_charges_winter["energy_charge_ratio"].quantile(0.9
 
 ax_inset.set(
     # xlim=np.round((0, mean_energy_99),3),
-    xlim=np.round((0, 0.5), 3),
+    xlim=(0, 0.4),
     # xticks=np.arange(0, mean_energy_99*1.01, 0.2),
-    xticks=np.arange(0, 0.6, 0.25),
+    xticks=[0, 0.2, 0.4],
     ylim=(1, energy_ratio_99),
     yticks=np.arange(1, energy_ratio_99 + 1, 1),
 )
@@ -296,12 +296,14 @@ ax_inset.scatter(
 )
 
 ax_inset.set(
-    xlim=np.round((0, max_demand_99), 3),
+    # xlim=np.round((0, max_demand_99), 3),
+    xlim=(0, 70),
     # xticks=np.arange(0, max_demand_99*1.01, 20),
-    xticks=np.arange(0, 60.1, 20),
-    ylim=(1, demand_ratio_99),
+    xticks=np.arange(0, 71, 35),
+    # ylim=(1, demand_ratio_99),
+    ylim=(1, 3),
     # yticks=np.arange(0, demand_ratio_99+1, 4),
-    yticks=np.arange(0, 15.1, 3),
+    yticks=np.arange(1, 3.1, 1),
 )
 
 ## Subplot D: Winter Demand Charges
@@ -343,12 +345,13 @@ ax_inset.scatter(
     edgecolor="black",
 )
 ax_inset.set(
-    xlim=np.round((0, max_demand_99), 3),
+    # xlim=np.round((0, max_demand_99), 3),
+    xlim=(0, 40),
     # xticks=np.arange(0, max_demand_99*1.01, 20),
-    xticks=np.arange(0, 60.1, 20),
+    xticks=np.arange(0, 40.1, 20),
     ylim=(1, demand_ratio_99),
     # yticks=np.arange(0, demand_ratio_99+1, 4),
-    yticks=np.arange(0, 15.1, 3),
+    yticks=np.arange(1, 4.1, 1),
 )
 
 ## Subplot E: Charge Tiers
@@ -357,7 +360,7 @@ tier_matrix = np.zeros((6, 9))
 for index, row in df_charges_summer.iterrows():
     tier_matrix[int(row["demand_tiers"]), int(row["energy_tiers"])] += 1
 
-cax = ax[2, 0].matshow(tier_matrix, cmap="bone_r", vmin=0, vmax=1000, aspect='auto')
+cax = ax[2, 0].matshow(tier_matrix, cmap="bone_r", vmin=0, vmax=250, aspect='auto')
 
 ax[2, 0].set_xticks(np.arange(0, 4.5, 1))
 ax[2, 0].set_yticks(np.arange(0, 3.5, 1))
@@ -367,7 +370,7 @@ ax[2, 0].xaxis.tick_bottom()
 ax[2, 0].set(xlabel="Energy Charge Tiers", ylabel="Demand Charge Tiers\n")
 # set a color bar label
 cbar = fig.colorbar(cax)
-cbar.set_label("Number of Tariffs", rotation=90, labelpad=0)
+cbar.set_label("Number of Tariffs", rotation=90, labelpad=5)
 
 # Subplot H: DAM Variation
 # locate the data folders
@@ -426,7 +429,15 @@ ax[3, 1].set(
 )
 
 ## Subplot G: Time-averaged Tariff
-tariff_path = "data/tariffs/timeseries"
+tariff_path = os.path.join(
+    basepath,
+    "data",
+    "tariffs",
+    "delivery_only",
+    "timeseries",
+    "combined",
+)
+timeseries_fps = glob.glob(tariff_path + "/*.csv")
 regions = ["CAISO", "ERCOT", "ISONE", "MISO", "NYISO", "PJM", "SPP"]
 
 # get directory of cwd
@@ -436,15 +447,42 @@ tariff_gpd = gpd.GeoDataFrame(
     geometry=gpd.points_from_xy(metadata.longitude, metadata.latitude), data=metadata
 )
 
-combined_tariff_files = glob.glob(os.path.join(basepath, tariff_path, "combined/*.csv"))
+tariff_gpd = gpd.GeoDataFrame(geometry=gpd.points_from_xy(metadata.longitude, metadata.latitude), data=metadata)
+
+iso_name_map = {
+    "CALIFORNIA INDEPENDENT SYSTEM OPERATOR": "CAISO",
+    "ELECTRIC RELIABILITY COUNCIL OF TEXAS, INC.": "ERCOT",
+    "ISO NEW ENGLAND INC.": "ISONE",
+    "MIDCONTINENT INDEPENDENT TRANSMISSION SYSTEM OPERATOR, INC..": "MISO",
+    "NEW YORK INDEPENDENT SYSTEM OPERATOR": "NYISO",
+    "PJM INTERCONNECTION, LLC": "PJM",
+    "SOUTHWEST POWER POOL": "SPP",
+}
+
+iso_gdf = gpd.read_file(os.path.join(basepath, "data", "geospatial", "iso", "Independent_System_Operators.shp"))
+for i in tqdm(tariff_gpd.index): 
+    iso_list = []
+    for j in iso_gdf.index:
+        if iso_gdf.geometry[j].contains(tariff_gpd.geometry[i]):
+            iso_list.append(iso_name_map[iso_gdf.NAME[j]])
+    tariff_gpd.loc[i, 'Num_ISO'] = len(iso_list)
+    if len(iso_list) > 0: 
+        tariff_gpd.loc[i, 'ISO'] = ','.join(iso_list)
+
+tariff_gpd.loc[tariff_gpd.Num_ISO > 1, 'ISO'] = tariff_gpd.ISO.str.split(',').str[-1]
+# merge tariff geolocation with metadata to map ISOs
+cols_to_use = tariff_gpd.columns.difference(metadata.columns).tolist()
+cols_to_use.append("label")
+metadata = pd.merge(metadata, tariff_gpd[cols_to_use], on="label", how="outer")
 
 months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 # create a dictionary with regions as keys
 region_dict = {region: {m: [] for m in months} for region in regions}
-
-for f in tqdm(combined_tariff_files):
-    tariff_id = f.split("_")[1].split(".")[0]
+num_hyphens = tariff_path.count("_")
+for f in tqdm(timeseries_fps):
+    # This needs to be the second 
+    tariff_id = f.split("_")[1 + num_hyphens].split(".")[0]
     costdata = pd.read_csv(f)
 
     # get the region from the tariff_gpd dataframe
@@ -459,6 +497,11 @@ for f in tqdm(combined_tariff_files):
         month_data = np.mean(costdata[costdata["Month"] == m]["Cost"].values)
         # add the cost data to the dictionary
         region_dict[region][m].append(month_data)
+
+# create line for $0 cutoff
+ax[3, 0].hlines(
+    y=0, xmin=3, xmax=10 * (len(regions) + 0.5) + 2, color="black", ls="--", lw=2
+)
 
 month_mod = np.linspace(-4, 4, 13)
 for i, region in enumerate(regions):
@@ -478,30 +521,16 @@ for i, region in enumerate(regions):
             alpha=0.25,
         )
 
-# create line for $0 cutoff
-ax[3, 0].hlines(
-    y=0, xmin=3, xmax=10 * (len(fnames_lmp) + 0.5) + 2, color="black", ls="--", lw=2
-)
-ax[3, 0].set_xticks(np.arange(10, 10 * (len(regions) + 1), 10))
+ax[3, 0].set_xticks(10 * np.arange(1, len(regions) + 1))
 ax[3, 0].set_xticklabels(regions)
 ax[3, 0].set(
-    xlim=(5, None),
+    xlim=(3, 10 * (len(regions) + 0.5) + 2),
     ylim=(-100, 1200),
     yticks=np.hstack([np.array([-100]), np.arange(0, 1301, 200)]),
     ylabel="Time-averaged Tariff Cost\n($/MWh)",
 )
 
 ## Subplot F: DAM vs. Tariff
-tariff_path = os.path.join(
-    basepath,
-    "data",
-    "tariffs",
-    "delivery_only",
-    "timeseries",
-    "combined",
-)
-timeseries_fps = glob.glob(tariff_path + "/*.csv")
-
 metadata_path = os.path.join(
     basepath,
     "data",
@@ -525,7 +554,6 @@ enum_month = {
     "11": "Nov",
     "12": "Dec",
 }
-
 
 def get_lmp_month(iso, month, basepath):
     lmp_path = os.path.join(basepath, "data", "DAMs")
@@ -613,7 +641,8 @@ ax[2, 1].set(
     ylim=(0.9, 100),
 )
 
-ax[2, 1].legend(loc="upper left", frameon=False)
+# Comment out this legend to create it and move it below the plot manually
+# ax[2, 1].legend(loc="upper left", frameon=False)
 
 ## Save Output
 labels = ["a.", "b.", "c.", "d.", "e.", "f.", "g.", "h."]
@@ -638,5 +667,5 @@ for label, axis in zip(labels, ax.flatten()):
 fig.tight_layout()
 fig.align_labels()
 fig_path = os.path.join(basepath, "figures")
-fig.savefig(os.path.join(fig_path, "Figure3.svg"), bbox_inches="tight", dpi=300)
-fig.savefig(os.path.join(fig_path, "Figure3.png"), bbox_inches="tight", dpi=300)
+fig.savefig(os.path.join(fig_path, "Supplementary2.svg"), bbox_inches="tight", dpi=300)
+fig.savefig(os.path.join(fig_path, "Supplementary2.png"), bbox_inches="tight", dpi=300)

@@ -41,7 +41,7 @@ Which creates the following preprocessed data (note that this data has been save
 - `data/MEFs/average_mefs.csv`: marginal emission factor (MEF) samples as monthly/hourly average timeseries.
 - `data/DAMs/`: average day-ahead market (DAM) price as monthly/hourly average timeseries, with each region having its own CSV file (e.g., `CAISOcosts.csv` or `ERCOTcosts.csv`).
   - ***NOTE***: `compile_average_dams.py` will throw an error without data provided by the user since we cannot re-publish the raw DAM data that we collected.
-- `data/tariffs/timeseries`: tariffs are converted to timeseries format assuming a 1 MW load for future analysis.
+- `data/tariffs/bundled/timeseries` and `data/tariffs/delivery_only/timeseries`: tariffs are converted to timeseries format assuming a 1 MW load for future analysis.
 
 
 ## Data analysis
