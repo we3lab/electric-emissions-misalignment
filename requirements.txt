@@ -1,8 +1,9 @@
+eeco==0.1.0
 geopandas==1.0.1
 matplotlib
 matplotlib-scalebar
 numpy
 pandas
+scikit-learn
 seaborn==0.13.2
 tqdm
-eeco==0.1.0
