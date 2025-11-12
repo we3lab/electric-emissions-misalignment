@@ -1,0 +1,14 @@
+label,utility,type,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+55003100001,electric,customer,,,,,,,,,,592.803,592.803,$/month,
+,electric,energy,,0,0,1,5,10,22,0,4,0.07541,0.07541,$/kWh,Includes cost of fuel adjustment
+,electric,energy,,0,0,6,9,10,22,0,4,0.08672,0.08672,$/kWh,Includes cost of fuel adjustment
+,electric,energy,,0,0,10,12,10,22,0,4,0.07541,0.07541,$/kWh,Includes cost of fuel adjustment
+,electric,energy,,0,0,1,12,0,10,0,4,0.05792,0.05792,$/kWh,Includes cost of fuel adjustment
+,electric,energy,,0,0,1,12,22,24,0,4,0.05792,0.05792,$/kWh,Includes cost of fuel adjustment
+,electric,energy,,0,0,1,12,0,24,5,6,0.05792,0.05792,$/kWh,Includes cost of fuel adjustment
+,electric,demand,winter-peak1,0,0,1,5,10,22,0,4,12.733,12.733,$/kW,
+,electric,demand,summer-peak,0,0,6,9,10,22,0,4,17.699,17.699,$/kW,
+,electric,demand,winter-peak2,0,0,10,12,10,22,0,4,12.733,12.733,$/kW,
+,electric,demand,maximum,0,0,1,12,0,24,0,6,2.25,2.25,$/kW,
+,gas,customer,,,,,,,,,,450,450,$/month,Estimated from multiplying cost for 1 day by 30 days
+,gas,energy,,0,0,1,12,0,24,0,6,1.0539,0.372181885,$/therm or $/m3,

@@ -1,0 +1,27 @@
+label,utility,type,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+29001023001,electric,customer,,,,,,,,,,344.9,344.9,$/month,
+,electric,energy,,0,0,1,1,0,10,0,4,0.02637,0.02637,$/kWh,Includes Fuel and Purchased Power Adjustment
+,electric,energy,,0,0,1,1,10,22,0,4,0.03107,0.03107,$/kWh,
+,electric,energy,,0,0,1,1,22,24,0,4,0.02637,0.02637,$/kWh,
+,electric,energy,,0,0,1,1,0,24,5,6,0.02637,0.02637,$/kWh,
+,electric,energy,,0,0,2,5,0,10,0,4,0.02845,0.02845,$/kWh,
+,electric,energy,,0,0,2,5,10,22,0,4,0.03315,0.03315,$/kWh,
+,electric,energy,,0,0,2,5,22,24,0,4,0.02845,0.02845,$/kWh,
+,electric,energy,,0,0,2,5,0,24,5,6,0.02845,0.02845,$/kWh,
+,electric,energy,,0,0,6,9,0,10,0,4,0.03228,0.03228,$/kWh,
+,electric,energy,,0,0,6,9,10,22,0,4,0.03228,0.03228,$/kWh,
+,electric,energy,,0,0,6,9,22,24,0,4,0.04218,0.04218,$/kWh,
+,electric,energy,,0,0,6,9,0,24,5,6,0.03228,0.03228,$/kWh,
+,electric,energy,,0,0,10,12,0,10,0,4,0.03221,0.03221,$/kWh,
+,electric,energy,,0,0,10,12,10,22,0,4,0.03691,0.03691,$/kWh,
+,electric,energy,,0,0,10,12,22,24,0,4,0.03221,0.03221,$/kWh,
+,electric,energy,,0,0,10,12,0,24,5,6,0.03221,0.03221,$/kWh,
+,electric,demand,winter-peak,0,0,1,5,10,22,0,6,8.58,8.58,$/kW,
+,electric,demand,summer-peak,0,0,6,9,10,22,0,6,19.27,19.27,$/kW,
+,electric,demand,winter-peak2,0,0,10,12,10,22,0,6,8.58,8.58,$/kW,
+,gas,customer,,,,,,,,,,1063.73,1063.73,$/month,
+,gas,demand,maximum,0,0,1,12,0,24,0,6,26.88,9.492598034,$/therm/hr or $/m3/hr,
+,gas,energy,,0,0,1,10,0,24,0,6,0.40008,0.141287151,$/therm or $/m3,Includes purchased gas adjustment
+,gas,energy,,36000,101940.48,1,10,0,24,0,6,0.37882,0.133779241,$/therm or $/m3,Includes purchased gas adjustment
+,gas,energy,,0,0,11,12,0,24,0,6,0.62008,0.218979546,$/therm or $/m3,Includes purchased gas adjustment
+,gas,energy,,36000,101940.48,11,12,0,24,0,6,0.59882,0.211471635,$/therm or $/m3,Includes purchased gas adjustment

@@ -1,0 +1,10 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+67b784b068be0da29d0777a9,electric,customer,,,,,,,,,,,71.0,71.0,$/month,https://lite.coned.com/_external/cerates/documents/elecPSC10/electric-tariff.pdf	http://www.coned.com/rates/elec.asp
+67b784b068be0da29d0777a9,electric,demand,,flat,0,0,1,5,0,24,0,6,1.41,1.41,$/kW,adjustment factor of 1.41
+67b784b068be0da29d0777a9,electric,demand,,flat,5.0,5.0,1,5,0,24,0,6,34.91,34.91,$/kW,adjustment factor of 1.41
+67b784b068be0da29d0777a9,electric,demand,,flat,5.0,5.0,6,9,0,24,0,6,1.41,1.41,$/kW,adjustment factor of 1.41
+67b784b068be0da29d0777a9,electric,demand,,flat,5.0,5.0,6,9,0,24,0,6,44.209999999999994,44.209999999999994,$/kW,adjustment factor of 1.41
+67b784b068be0da29d0777a9,electric,demand,,flat,5.0,5.0,10,12,0,24,0,6,1.41,1.41,$/kW,adjustment factor of 1.41
+67b784b068be0da29d0777a9,electric,demand,,flat,5.0,5.0,10,12,0,24,0,6,34.91,34.91,$/kW,adjustment factor of 1.41
+67b784b068be0da29d0777a9,electric,energy,,period0,0,0,1,12,0,24,0,4,0.02673,0.02673,$/kWh,
+67b784b068be0da29d0777a9,electric,energy,,period0,0,0,1,12,0,24,5,6,0.02673,0.02673,$/kWh,

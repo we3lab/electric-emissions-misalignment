@@ -1,0 +1,4 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+679bfaf5bb98f2c7860f0171,electric,customer,,,,,,,,,,,242.13,242.13,$/month,https://www.eversource.com/content/docs/default-source/rates-tariffs/nh-summary-rates.pdf?sfvrsn=eefadaef_31	https://www.eversource.com/content/residential/account-billing/manage-bill/about-your-bill/rates-tariffs/electric-supply-rates
+679bfaf5bb98f2c7860f0171,electric,energy,,period0,0,0,1,12,0,24,0,4,0.33054,0.33054,$/kWh,
+679bfaf5bb98f2c7860f0171,electric,energy,,period0,0,0,1,12,0,24,5,6,0.33054,0.33054,$/kWh,

@@ -1,0 +1,6 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+669036e17fdc74c11503a3f0,electric,customer,,,,,,,,,,,4615.25,4615.25,$/month,https://www.duquesnelight.com/docs/default-source/default-document-library/currenttariff.pdf?v=57	https://www.duquesnelight.com/service-reliability/service-map/rates/tariff-resources
+669036e17fdc74c11503a3f0,electric,demand,,flat,0,0,1,12,0,24,0,6,0.0,0.0,$/kW,adjustment factor of 0.0
+669036e17fdc74c11503a3f0,electric,demand,,flat,300.0,300.0,1,12,0,24,0,6,10.684470000000001,10.684470000000001,$/kW,adjustment factor of 0.88447
+669036e17fdc74c11503a3f0,electric,energy,,period0,0,0,1,12,0,24,0,4,0.0,0.0,$/kWh,
+669036e17fdc74c11503a3f0,electric,energy,,period0,0,0,1,12,0,24,5,6,0.0,0.0,$/kWh,

@@ -1,0 +1,12 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+662040e78d8df259480bf733,electric,customer,,,,,,,,,,,780.0,780.0,$/month,https://assets.ctfassets.net/416ywc1laqmd/6iAoDWbGKULIlR2vzwe8cv/de8c314402cc9c38279a7c91c7c4d2cd/Sched_085.pdf	https://portlandgeneral.com/about/info/rates-and-regulatory/tariff
+662040e78d8df259480bf733,electric,demand,,period0,0,0,1,12,0,24,0,4,5.22,5.22,$/kW,
+662040e78d8df259480bf733,electric,demand,,period0,200.0,200.0,1,12,0,24,0,4,2.12,2.12,$/kW,
+662040e78d8df259480bf733,electric,demand,,period0,0,0,1,12,0,24,5,6,5.22,5.22,$/kW,
+662040e78d8df259480bf733,electric,demand,,period0,200.0,200.0,1,12,0,24,5,6,2.12,2.12,$/kW,
+662040e78d8df259480bf733,electric,energy,,period0,0,0,1,12,0,6,0,4,0.08874,0.08874,$/kWh,
+662040e78d8df259480bf733,electric,energy,,period1,0,0,1,12,6,22,0,4,0.08874,0.08874,$/kWh,
+662040e78d8df259480bf733,electric,energy,,period0,0,0,1,12,22,24,0,4,0.08874,0.08874,$/kWh,
+662040e78d8df259480bf733,electric,energy,,period0,0,0,1,12,0,6,5,6,0.08874,0.08874,$/kWh,
+662040e78d8df259480bf733,electric,energy,,period1,0,0,1,12,6,22,5,6,0.08874,0.08874,$/kWh,
+662040e78d8df259480bf733,electric,energy,,period0,0,0,1,12,22,24,5,6,0.08874,0.08874,$/kWh,

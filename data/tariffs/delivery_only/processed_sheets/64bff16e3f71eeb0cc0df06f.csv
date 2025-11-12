@@ -1,0 +1,9 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+64bff16e3f71eeb0cc0df06f,electric,customer,,,,,,,,,,,717.7,717.7,$/month,https://www.comed.com/SiteCollectionDocuments/MyAccount/MyBillUsage/CurrentRates/Delivery_Service_Charges_InfoSheets.pdf	https://www.comed.com/MyAccount/MyBillUsage/Pages/CurrentRatesTariffs.aspx
+64bff16e3f71eeb0cc0df06f,electric,demand,,flat,0,0,1,12,0,24,0,6,8.78,8.78,$/kW,
+64bff16e3f71eeb0cc0df06f,electric,energy,,period0,0,0,1,5,0,24,0,4,0.024139999999999998,0.024139999999999998,$/kWh,
+64bff16e3f71eeb0cc0df06f,electric,energy,,period1,0,0,6,9,0,24,0,4,0.024139999999999998,0.024139999999999998,$/kWh,
+64bff16e3f71eeb0cc0df06f,electric,energy,,period0,0,0,10,12,0,24,0,4,0.024139999999999998,0.024139999999999998,$/kWh,
+64bff16e3f71eeb0cc0df06f,electric,energy,,period0,0,0,1,5,0,24,5,6,0.024139999999999998,0.024139999999999998,$/kWh,
+64bff16e3f71eeb0cc0df06f,electric,energy,,period1,0,0,6,9,0,24,5,6,0.024139999999999998,0.024139999999999998,$/kWh,
+64bff16e3f71eeb0cc0df06f,electric,energy,,period0,0,0,10,12,0,24,5,6,0.024139999999999998,0.024139999999999998,$/kWh,

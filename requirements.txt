@@ -1,0 +1,8 @@
+geopandas==1.0.1
+matplotlib
+matplotlib-scalebar
+numpy
+pandas
+seaborn==0.13.2
+tqdm
+eeco==0.1.0

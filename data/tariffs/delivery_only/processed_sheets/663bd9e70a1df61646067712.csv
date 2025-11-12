@@ -1,0 +1,11 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+663bd9e70a1df61646067712,electric,customer,,,,,,,,,,,80.1,80.1,$/month,https://www.lipower.org/wp-content/uploads/2023/12/LIPA-Tariff-January-2024.pdf	https://www.lipower.org/about-us/tariff/
+663bd9e70a1df61646067712,electric,demand,,flat,0,0,1,5,0,24,0,6,17.31,17.31,$/kW,
+663bd9e70a1df61646067712,electric,demand,,flat,0,0,6,9,0,24,0,6,18.95,18.95,$/kW,
+663bd9e70a1df61646067712,electric,demand,,flat,0,0,10,12,0,24,0,6,17.31,17.31,$/kW,
+663bd9e70a1df61646067712,electric,energy,,period0,0,0,1,5,0,24,0,4,0.04055,0.04055,$/kWh,
+663bd9e70a1df61646067712,electric,energy,,period1,0,0,6,9,0,24,0,4,0.06321,0.06321,$/kWh,
+663bd9e70a1df61646067712,electric,energy,,period0,0,0,10,12,0,24,0,4,0.04055,0.04055,$/kWh,
+663bd9e70a1df61646067712,electric,energy,,period0,0,0,1,5,0,24,5,6,0.04055,0.04055,$/kWh,
+663bd9e70a1df61646067712,electric,energy,,period1,0,0,6,9,0,24,5,6,0.06321,0.06321,$/kWh,
+663bd9e70a1df61646067712,electric,energy,,period0,0,0,10,12,0,24,5,6,0.04055,0.04055,$/kWh,

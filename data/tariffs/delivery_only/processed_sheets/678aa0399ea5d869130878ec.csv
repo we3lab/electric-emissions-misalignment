@@ -1,0 +1,23 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+678aa0399ea5d869130878ec,electric,customer,,,,,,,,,,,370.81,370.81,$/month,https://nj.pseg.com/-/media/pseg/public-site/documents/current-electric-tariff/electric-tariff-17-gprc-effective-20250101.ashx	https://nj.pseg.com/aboutpseg/regulatorypage/electrictariffs
+678aa0399ea5d869130878ec,electric,demand,,flat,0,0,1,5,0,24,0,6,5.771,5.771,$/kW,adjustment factor of 1.925
+678aa0399ea5d869130878ec,electric,demand,,flat,0,0,6,9,0,24,0,6,15.856100000000001,15.856100000000001,$/kW,adjustment factor of 1.925
+678aa0399ea5d869130878ec,electric,demand,,flat,0,0,10,12,0,24,0,6,5.771,5.771,$/kW,adjustment factor of 1.925
+678aa0399ea5d869130878ec,electric,energy,,period1,0,0,1,5,0,8,0,4,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period0,0,0,1,5,8,22,0,4,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period1,0,0,1,5,22,24,0,4,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period3,0,0,6,9,0,8,0,4,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period2,0,0,6,9,8,22,0,4,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period3,0,0,6,9,22,24,0,4,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period1,0,0,10,12,0,8,0,4,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period0,0,0,10,12,8,22,0,4,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period1,0,0,10,12,22,24,0,4,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period1,0,0,1,5,0,8,5,6,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period0,0,0,1,5,8,22,5,6,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period1,0,0,1,5,22,24,5,6,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period3,0,0,6,9,0,8,5,6,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period2,0,0,6,9,8,22,5,6,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period3,0,0,6,9,22,24,5,6,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period1,0,0,10,12,0,8,5,6,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period0,0,0,10,12,8,22,5,6,0.02232,0.02232,$/kWh,
+678aa0399ea5d869130878ec,electric,energy,,period1,0,0,10,12,22,24,5,6,0.02232,0.02232,$/kWh,

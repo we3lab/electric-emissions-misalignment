@@ -1,0 +1,12 @@
+# raw day-ahead market (DAM) price data cannot be republished
+/data/DAMs/CAISO
+/data/DAMs/ERCOT
+/data/DAMs/ISONE
+/data/DAMs/MISO
+/data/DAMs/NYISO
+/data/DAMs/PJM
+/data/DAMs/SPP
+
+# environment-specific files
+.DS_Store
+Pipfile*

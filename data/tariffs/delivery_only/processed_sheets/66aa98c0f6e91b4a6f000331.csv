@@ -1,0 +1,17 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+66aa98c0f6e91b4a6f000331,electric,customer,,,,,,,,,,,320.0,320.0,$/month,https://www.firstenergycorp.com/content/dam/customer/Customer%20Choice/Files/Ohio/tariffs/TE-2024-Electric-Service.pdf	https://www.firstenergycorp.com/content/customer/customer_choice/ohio_/ohio_tariffs.html#gsc.tab=0
+66aa98c0f6e91b4a6f000331,electric,demand,,flat,0,0,1,12,0,24,0,6,6.801894736842105,6.801894736842105,$/kW,adjustment factor of 6.3433
+66aa98c0f6e91b4a6f000331,electric,energy,,period0,0,0,1,5,0,24,0,4,0.00787,0.00787,$/kWh,
+66aa98c0f6e91b4a6f000331,electric,energy,,period0,2000.0,2000.0,1,5,0,24,0,4,0.00741,0.00741,$/kWh,
+66aa98c0f6e91b4a6f000331,electric,energy,,period0,15000.0,15000.0,1,5,0,24,0,4,0.00685,0.00685,$/kWh,
+66aa98c0f6e91b4a6f000331,electric,energy,,period1,15000.0,15000.0,6,8,0,24,0,4,0.00787,0.00787,$/kWh,
+66aa98c0f6e91b4a6f000331,electric,energy,,period1,2000.0,2000.0,6,8,0,24,0,4,0.00741,0.00741,$/kWh,
+66aa98c0f6e91b4a6f000331,electric,energy,,period1,15000.0,15000.0,6,8,0,24,0,4,0.00685,0.00685,$/kWh,
+66aa98c0f6e91b4a6f000331,electric,energy,,period0,15000.0,15000.0,9,12,0,24,0,4,0.00685,0.00685,$/kWh,
+66aa98c0f6e91b4a6f000331,electric,energy,,period0,0,0,1,5,0,24,5,6,0.00787,0.00787,$/kWh,
+66aa98c0f6e91b4a6f000331,electric,energy,,period0,2000.0,2000.0,1,5,0,24,5,6,0.00741,0.00741,$/kWh,
+66aa98c0f6e91b4a6f000331,electric,energy,,period0,15000.0,15000.0,1,5,0,24,5,6,0.00685,0.00685,$/kWh,
+66aa98c0f6e91b4a6f000331,electric,energy,,period1,15000.0,15000.0,6,8,0,24,5,6,0.00787,0.00787,$/kWh,
+66aa98c0f6e91b4a6f000331,electric,energy,,period1,2000.0,2000.0,6,8,0,24,5,6,0.00741,0.00741,$/kWh,
+66aa98c0f6e91b4a6f000331,electric,energy,,period1,15000.0,15000.0,6,8,0,24,5,6,0.00685,0.00685,$/kWh,
+66aa98c0f6e91b4a6f000331,electric,energy,,period0,15000.0,15000.0,9,12,0,24,5,6,0.00685,0.00685,$/kWh,

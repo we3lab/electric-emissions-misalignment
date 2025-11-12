@@ -1,0 +1,5 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+6803c05fe8d539b33004867b,electric,customer,,,,,,,,,,,530.0,530.0,$/month,https://www.cenhud.com/globalassets/pdf/account-resources/rates/deliveryratessummary.pdf	https://www.cenhud.com/rates
+6803c05fe8d539b33004867b,electric,demand,,flat,0,0,1,12,0,24,0,6,10.71183,10.71183,$/kW,adjustment factor of 0.00183
+6803c05fe8d539b33004867b,electric,energy,,period0,0,0,1,12,0,24,0,4,0.23669,0.23669,$/kWh,
+6803c05fe8d539b33004867b,electric,energy,,period0,0,0,1,12,0,24,5,6,0.23669,0.23669,$/kWh,

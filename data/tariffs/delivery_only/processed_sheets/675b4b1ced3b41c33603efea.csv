@@ -1,0 +1,8 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+675b4b1ced3b41c33603efea,electric,customer,,,,,,,,,,,83.53,83.53,$/month,https://www.uinet.com/documents/1678076/1695127/0.1%2BSchedule%2Bof%2BRates%2Band%2BRiders%2B-%2B05.01.22.pdf/5470a003-85b2-7104-39a5-567ea1c686f2?t=1654209434303	https://www.uinet.com/account/understandyourbill/pricing
+675b4b1ced3b41c33603efea,electric,demand,,period0,0,0,1,12,0,10,0,4,15.82,15.82,$/kW,
+675b4b1ced3b41c33603efea,electric,demand,,period1,0,0,1,12,10,18,0,4,22.65,22.65,$/kW,
+675b4b1ced3b41c33603efea,electric,demand,,period0,0,0,1,12,18,24,0,4,15.82,15.82,$/kW,
+675b4b1ced3b41c33603efea,electric,demand,,period0,0,0,1,12,0,24,5,6,15.82,15.82,$/kW,
+675b4b1ced3b41c33603efea,electric,energy,,period0,0,0,1,12,0,24,0,4,0.061287999999999995,0.061287999999999995,$/kWh,
+675b4b1ced3b41c33603efea,electric,energy,,period0,0,0,1,12,0,24,5,6,0.061287999999999995,0.061287999999999995,$/kWh,

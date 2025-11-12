@@ -1,0 +1,7 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+5bbbb8e05457a37d2c135b4e,electric,customer,,,,,,,,,,,836.1,836.1,$/month,https://www.indianamichiganpower.com/global/utilities/lib/docs/ratesandtariffs/Michigan/IMMITB1609-01-2018.pdf	https://www.indianamichiganpower.com/account/bills/rates/IandMRatesTariffsMI.aspx
+5bbbb8e05457a37d2c135b4e,electric,demand,,flat,0,0,1,12,0,24,0,6,11.0,11.0,$/kW,
+5bbbb8e05457a37d2c135b4e,electric,energy,,period0,0,0,1,12,0,7,0,4,0.000853,0.000853,$/kWh,
+5bbbb8e05457a37d2c135b4e,electric,energy,,period1,0,0,1,12,7,21,0,4,0.035762999999999996,0.035762999999999996,$/kWh,
+5bbbb8e05457a37d2c135b4e,electric,energy,,period0,0,0,1,12,21,24,0,4,0.000853,0.000853,$/kWh,
+5bbbb8e05457a37d2c135b4e,electric,energy,,period0,0,0,1,12,0,24,5,6,0.000853,0.000853,$/kWh,

@@ -1,0 +1,3 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+59c957e75457a39615c8c1ac,electric,customer,,,,,,,,,,,0.0,0.0,$/month,https://www.nypa.gov/-/media/nypa/documents/document-library/rates/other091417.pdf
+59c957e75457a39615c8c1ac,electric,demand,,flat,0,0,1,12,0,24,0,6,3.92,3.92,$/kW,

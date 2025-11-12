@@ -1,0 +1,5 @@
+label,utility,type,assessed,period,basic_charge_limit (imperial),basic_charge_limit (metric),month_start,month_end,hour_start,hour_end,weekday_start,weekday_end,charge (imperial),charge (metric),units,Notes
+656a836414403017e307fe0c,electric,customer,,,,,,,,,,,60.0,60.0,$/month,https://www.pplelectric.com/-/media/PPLElectric/At-Your-Service/Docs/Current-Electric-Tariff/master-361-362-10032023.ashx	https://www.pplelectric.com/utility/about-us/electric-rates-and-rules/current-electric-tariff/table-of-contents
+656a836414403017e307fe0c,electric,demand,,flat,0,0,1,12,0,24,0,6,3.9861999999999997,3.9861999999999997,$/kW,adjustment factor of 0.0012
+656a836414403017e307fe0c,electric,energy,,period0,0,0,1,12,0,24,0,4,0.02977,0.02977,$/kWh,
+656a836414403017e307fe0c,electric,energy,,period0,0,0,1,12,0,24,5,6,0.02977,0.02977,$/kWh,
