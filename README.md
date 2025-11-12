@@ -101,7 +101,7 @@ data
  -> geospatial
     -> Shapefiles for geospatial plotting
  -> IBDR
-    -> Raw incentive-based demand response data
+    -> Processed incentive-based demand response data
  -> MEFs
     -> Raw and processed marginal emission factors
  -> tariffs
