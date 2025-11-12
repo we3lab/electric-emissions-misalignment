@@ -43,7 +43,6 @@ Which creates the following preprocessed data (note that this data has been save
   - ***NOTE***: `compile_average_dams.py` will throw an error without data provided by the user since we cannot re-publish the raw DAM data that we collected.
 - `data/tariffs/bundled/timeseries` and `data/tariffs/delivery_only/timeseries`: tariffs are converted to timeseries format assuming a 1 MW load for future analysis.
 
-
 ## Data analysis
 
 Code for data analysis can be found in `code/analyze`. The analysis code consists of the following stpes:
@@ -78,7 +77,38 @@ python supplementary3.py
 python supplementary4.py
 ```
 
-Note that Figure 1 was made outside of Python. Figures 3, 5, and 6 and Supplmentary Figure 1 will throw errors without data provided by the user since we cannot re-publish the raw DAM data that was used to generate the published figures.
+Note that Figure 1 was made outside of Python. Figures 3, 5, and 6 and Supplementary Figure 1 will throw errors without data provided by the user since we cannot re-publish the raw DAM data that was used to generate the published figures.
+
+## File hierarchy
+
+This repository is organized into the following folders:
+
+```
+code
+ -> analyze
+    -> Scripts to analyze the data
+ -> preprocess
+    -> Scripts to preprocess the data
+ -> visualize
+    -> Scripts to visualize the data
+data
+ -> AEFs
+    -> Raw and processed average emission factors
+ -> correlation
+    -> Computed correlation coefficients
+ -> DAMs
+    -> Only average price is included since we cannot republish raw data
+ -> geospatial
+    -> Shapefiles for geospatial plotting
+ -> IBDR
+    -> Processed incentive-based demand response data
+ -> MEFs
+    -> Raw and processed marginal emission factors
+ -> tariffs
+    -> Processed industrial electricity tariff data
+figures
+ -> PNG and SVG versions of figures
+```
 
 ## References
 
