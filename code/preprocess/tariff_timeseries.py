@@ -110,11 +110,16 @@ def create_monthly_timeseries(tariff, month, load_kw=1000, col_idx="0"):
     datetime_range = pd.date_range(start=start_dt, end=end_dt, freq="1h")
     scaled_customer_charge = customer_charge / (len(datetime_range) - 1)
     # NOTE: default col_idx="0" is flat load shape
-    load_shape = pd.read_csv(
-        os.path.join(basepath, "data", "loads", "Time_series_18_clusters.tsv"), sep='\t',
-    )[col_idx].array
-    consumption_estimate = np.sum(load_shape)
-    norm_load_shape = load_shape / np.average(load_shape) * load_kw
+    load_shapes = pd.read_csv(
+        os.path.join(basepath, "data", "loads", "Time_series_18_clusters.tsv"), 
+        sep='\t',
+        parse_dates=["Time"]
+    )
+    # select correct month and normalize data
+    desired_dates = load_shapes["Time"].dt.month == month
+    desired_load_shape = load_shapes[col_idx].loc[desired_dates].to_numpy()
+    norm_load_shape = desired_load_shape / np.average(desired_load_shape) * load_kw
+    consumption_estimate = np.sum(norm_load_shape)
     result = pd.DataFrame()
     result["DateTime"] = datetime_range[:-1]
     demand_timeseries = calculate_demand_charge_timeseries(
