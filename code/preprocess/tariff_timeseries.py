@@ -97,13 +97,13 @@ def create_monthly_timeseries(tariff, month, load_kw=1000, col_idx="0"):
         end_dt = np.datetime64("2024-01-01")
     elif month > 9:
         start_dt = np.datetime64("2023-" + str(month) + "-01")
-        end_dt = np.datetime64("2024-" + str(month + 1) + "-01")
+        end_dt = np.datetime64("2023-" + str(month + 1) + "-01")
     elif month == 9:
         start_dt = np.datetime64("2023-09-01")
-        end_dt = np.datetime64("2024-10-01")
+        end_dt = np.datetime64("2023-10-01")
     else:
         start_dt = np.datetime64("2023-0" + str(month) + "-01")
-        end_dt = np.datetime64("2024-0" + str(month + 1) + "-01")
+        end_dt = np.datetime64("2023-0" + str(month + 1) + "-01")
 
     # get the charge dictionary
     charge_dict = get_charge_dict(start_dt, end_dt, tariff, resolution="1h")
