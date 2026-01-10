@@ -37,6 +37,9 @@ def get_sample_tariff_data(
         tariff_data = tariff_data.resample("h", on="DateTime").mean()
         if len(tariff_data.values) == len(aef_values):
             pp = np.corrcoef(aef_values, tariff_data["Cost"].values)[0, 1]
+        elif len(tariff_data.values) < len(aef_values):
+            end = len(tariff_data.values.flatten())
+            pp = np.corrcoef(tariff_data.values.flatten(), aef_values[:end])[0][1]
         else:
             end = len(aef_values)
             pp = np.corrcoef(tariff_data.values.flatten()[:end], aef_values)[0][1]
