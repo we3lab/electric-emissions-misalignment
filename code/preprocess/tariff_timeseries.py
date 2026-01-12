@@ -91,7 +91,7 @@ def calculate_demand_charge_timeseries(
     return result
 
 
-def create_monthly_timeseries(tariff, month, load_kw=1000, col_idx="0"):
+def create_monthly_timeseries(tariff, month, load_kw=1000, col_idx="2"):
     if month == 12:
         start_dt = np.datetime64("2023-" + str(month) + "-01")
         end_dt = np.datetime64("2024-01-01")
