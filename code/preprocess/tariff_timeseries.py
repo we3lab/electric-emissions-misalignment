@@ -19,32 +19,35 @@ def calculate_energy_charge_timeseries(
     result = np.zeros(len(load_array))
     # loop through energy charges
     for key, charge_array in charge_dict.items():
-        utility, charge_type, name, eff_start, eff_end, limit_str = key.split("_")
-        # if we want itemized costs skip irrelvant portions of the bill
-        if (utility != "electric") or (charge_type != "energy"):
-            continue
+        try:
+            utility, charge_type, name, eff_start, eff_end, limit_str = key.split("_")
+            # if we want itemized costs skip irrelvant portions of the bill
+            if (utility != "electric") or (charge_type != "energy"):
+                continue
 
-        charge_limit = int(limit_str)
-        key_substr = "_".join([utility, charge_type, name, eff_start, eff_end])
-        next_limit = get_next_limit(key_substr, charge_limit, charge_dict.keys())
+            charge_limit = int(limit_str)
+            key_substr = "_".join([utility, charge_type, name, eff_start, eff_end])
+            next_limit = get_next_limit(key_substr, charge_limit, charge_dict.keys())
 
-        # calculate the cost of each charge
-        cost, _ = calculate_energy_cost(
-            charge_array,
-            load_array,
-            divisor=1,
-            limit=charge_limit,
-            next_limit=next_limit,
-            prev_consumption=0,
-            consumption_estimate=consumption_estimate,
-        )
+            # calculate the cost of each charge
+            cost, _ = calculate_energy_cost(
+                charge_array,
+                load_array,
+                divisor=1,
+                limit=charge_limit,
+                next_limit=next_limit,
+                prev_consumption=0,
+                consumption_estimate=consumption_estimate,
+            )
 
-        # divide the charge over the course of a month
-        charges_present = np.ones(len(load_array))
-        charges_present[charge_array == 0] = 0
-        num_steps = np.sum(charges_present)
-        if num_steps > 0:
-            result = result + charges_present * cost / num_steps
+            # divide the charge over the course of a month
+            charges_present = np.ones(len(load_array))
+            charges_present[charge_array == 0] = 0
+            num_steps = np.sum(charges_present)
+            if num_steps > 0:
+                result = result + charges_present * cost / num_steps
+        except:
+            print("Error with charge array with key", key)
 
     return result
 
@@ -55,49 +58,52 @@ def calculate_demand_charge_timeseries(
     result = np.zeros(len(load_array))
     # loop through energy charges
     for key, charge_array in charge_dict.items():
-        utility, charge_type, name, eff_start, eff_end, limit_str = key.split("_")
-        # if we want itemized costs skip irrelvant portions of the bill
-        if (utility != "electric") or (charge_type != "demand"):
-            continue
+        try:
+            utility, charge_type, name, eff_start, eff_end, limit_str = key.split("_")
+            # if we want itemized costs skip irrelvant portions of the bill
+            if (utility != "electric") or (charge_type != "demand"):
+                continue
 
-        charge_limit = int(limit_str)
-        key_substr = "_".join([utility, charge_type, name, eff_start, eff_end])
-        next_limit = get_next_limit(key_substr, charge_limit, charge_dict.keys())
+            charge_limit = int(limit_str)
+            key_substr = "_".join([utility, charge_type, name, eff_start, eff_end])
+            next_limit = get_next_limit(key_substr, charge_limit, charge_dict.keys())
 
-        # calculate the cost of each charge
-        cost, _ = calculate_demand_cost(
-            charge_array,
-            load_array,
-            limit=charge_limit,
-            next_limit=next_limit,
-            prev_demand=0,
-            prev_demand_cost=0,
-            consumption_estimate=consumption_estimate,
-        )
+            # calculate the cost of each charge
+            cost, _ = calculate_demand_cost(
+                charge_array,
+                load_array,
+                limit=charge_limit,
+                next_limit=next_limit,
+                prev_demand=0,
+                prev_demand_cost=0,
+                consumption_estimate=consumption_estimate,
+            )
 
-        # divide the charge over the course of a month when the charge was nonzero
-        charges_present = np.ones(len(load_array))
-        charges_present[charge_array == 0] = 0
-        num_steps = np.sum(charges_present)
-        if num_steps > 0:
-            result = result + charges_present * cost / num_steps
+            # divide the charge over the course of a month when the charge was nonzero
+            charges_present = np.ones(len(load_array))
+            charges_present[charge_array == 0] = 0
+            num_steps = np.sum(charges_present)
+            if num_steps > 0:
+                result = result + charges_present * cost / num_steps
+        except:
+            print("Error with charge array with key", key)
 
     return result
 
 
-def create_monthly_timeseries(tariff, month, load_kw=1000):
+def create_monthly_timeseries(tariff, month, load_kw=1000, col_idx="0"):
     if month == 12:
-        start_dt = np.datetime64("2024-" + str(month) + "-01")
-        end_dt = np.datetime64("2025-01-01")
+        start_dt = np.datetime64("2023-" + str(month) + "-01")
+        end_dt = np.datetime64("2024-01-01")
     elif month > 9:
-        start_dt = np.datetime64("2024-" + str(month) + "-01")
-        end_dt = np.datetime64("2024-" + str(month + 1) + "-01")
+        start_dt = np.datetime64("2023-" + str(month) + "-01")
+        end_dt = np.datetime64("2023-" + str(month + 1) + "-01")
     elif month == 9:
-        start_dt = np.datetime64("2024-09-01")
-        end_dt = np.datetime64("2024-10-01")
+        start_dt = np.datetime64("2023-09-01")
+        end_dt = np.datetime64("2023-10-01")
     else:
-        start_dt = np.datetime64("2024-0" + str(month) + "-01")
-        end_dt = np.datetime64("2024-0" + str(month + 1) + "-01")
+        start_dt = np.datetime64("2023-0" + str(month) + "-01")
+        end_dt = np.datetime64("2023-0" + str(month + 1) + "-01")
 
     # get the charge dictionary
     charge_dict = get_charge_dict(start_dt, end_dt, tariff, resolution="1h")
@@ -106,20 +112,34 @@ def create_monthly_timeseries(tariff, month, load_kw=1000):
     for key in customer_keys:
         customer_charge += charge_dict[key][0]
 
-    # define a dummy 1MW flat load
+    # define a dummy 1 MW flat load
     datetime_range = pd.date_range(start=start_dt, end=end_dt, freq="1h")
     scaled_customer_charge = customer_charge / (len(datetime_range) - 1)
-    flat_load = np.ones(len(datetime_range) - 1) * load_kw
-    consumption_estimate = np.sum(flat_load)
+    # NOTE: default col_idx="0" is flat load shape
+    load_shapes = pd.read_csv(
+        os.path.join(basepath, "data", "loads", "Time_series_18_clusters.tsv"), 
+        sep='\t',
+        parse_dates=["Time"]
+    )
+    # select correct month and normalize data
+    desired_dates = load_shapes["Time"].dt.month == month
+    desired_load_shape = load_shapes[col_idx].loc[desired_dates].to_numpy()
+    norm_load_shape = desired_load_shape / np.average(desired_load_shape) * load_kw
+    consumption_estimate = np.sum(norm_load_shape)
     result = pd.DataFrame()
     result["DateTime"] = datetime_range[:-1]
     demand_timeseries = calculate_demand_charge_timeseries(
-        tariff, charge_dict, flat_load, consumption_estimate
+        tariff, charge_dict, norm_load_shape, consumption_estimate
     )
     energy_timeseries = calculate_energy_charge_timeseries(
-        tariff, charge_dict, flat_load, consumption_estimate
+        tariff, charge_dict, norm_load_shape, consumption_estimate
     )
-    result["Cost"] = demand_timeseries + energy_timeseries + scaled_customer_charge
+    try:
+        result["Cost"] = demand_timeseries + energy_timeseries + scaled_customer_charge
+    except ValueError as ex:
+        result = pd.DataFrame()
+        result["DateTime"] = load_shapes["Time"][desired_dates]
+        result["Cost"] = demand_timeseries + energy_timeseries + scaled_customer_charge
     return result
 
 #########
@@ -153,12 +173,15 @@ num_month_to_str = {
 for month in range(1, 13):
     for tariff in tariff_list:
         tariff_df = pd.read_csv(tariff)
-        result = create_monthly_timeseries(tariff_df, month)
-        path_prefix = os.path.basename(tariff).split(".")[0]
-        outpath = os.path.join(
-            timeseries_path, path_prefix + "_" + num_month_to_str[month] + ".csv"
-        )
-        result.to_csv(outpath, index=False)
+        try:
+            result = create_monthly_timeseries(tariff_df, month)
+            path_prefix = os.path.basename(tariff).split(".")[0]
+            outpath = os.path.join(
+                timeseries_path, path_prefix + "_" + num_month_to_str[month] + ".csv"
+            )
+            result.to_csv(outpath, index=False)
+        except:
+            print("Error for tariff", tariff)
 
 tariff_files = glob.glob(timeseries_path + "/*.csv")
 
