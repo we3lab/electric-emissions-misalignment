@@ -386,10 +386,6 @@ cmap = plt.get_cmap("twilight", 13)
 
 regions = ["CAISO", "ERCOT", "ISONE", "MISO", "NYISO", "PJM", "SPP"]
 
-# create a dict that assigns shapes for each region
-shapes = ["s", "o", "D", "v", "P", "*", "X"]
-shape_dict = dict(zip(regions, shapes))
-
 # month modifier
 month_mod = np.linspace(-4, 4, 12)
 

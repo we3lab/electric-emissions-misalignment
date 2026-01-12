@@ -46,10 +46,6 @@ fig, ax = plt.subplots(2, 1, figsize=(90 / 25.4, 120 / 25.4))
 ## Subplot A
 cmap = plt.get_cmap("twilight", 13)
 
-# create a dict that assigns shapes for each region
-shapes = ["s", "o", "D", "v", "P", "*", "X"]
-shape_dict = dict(zip(regions, shapes))
-
 # month modifier
 month_mod = np.linspace(-4, 4, 12)
 f_mef = os.path.join(mef_path, "average_mefs.csv")
@@ -155,10 +151,6 @@ for i, r in enumerate(regions):
 
 ## Subplot B
 cmap = plt.get_cmap("twilight", 13)
-
-# create a dict that assigns shapes for each region
-shapes = ["s", "o", "D", "v", "P", "*", "X"]
-shape_dict = dict(zip(regions, shapes))
 
 # month modifier
 month_mod = np.linspace(-4, 4, 12)

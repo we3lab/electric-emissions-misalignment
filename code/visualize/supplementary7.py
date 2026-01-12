@@ -36,21 +36,6 @@ regions = ["CAISO", "ERCOT", "ISONE", "MISO", "NYISO", "PJM", "SPP"]
 # locate the data folders
 corr_dir = os.path.join(basepath, "data/correlation")
 
-month_season_map = {
-    1: "Winter",
-    2: "Winter",
-    3: "Winter",
-    4: "Winter",
-    5: "Summer",
-    6: "Summer",
-    7: "Summer",
-    8: "Summer",
-    9: "Summer",
-    10: "Summer",
-    11: "Winter",
-    12: "Winter",
-}
-
 region_color_map = {
     "CAISO": "#66c2a5",
     "ERCOT": "#fc8d62",
@@ -61,6 +46,7 @@ region_color_map = {
     "SPP": "#b3b3b3",
 }
 
+sectors = ["Flat", ]
 regions = ["CAISO", "ERCOT", "ISONE", "MISO", "NYISO", "PJM", "SPP"]
 months = [
     "Jan",
@@ -77,89 +63,77 @@ months = [
     "Dec",
 ]
 
-new_aef_tariff_data = {"iso": [], "corr_coef": [], "month": [], "season": []}
-new_mef_dam_data = {"iso": [], "corr_coef": [], "month": [], "season": []}
+
+combined_data = {"iso": [], "corr_coef": [], "month": [], "sector": []}
 
 for region in regions:
-    aef_corr_df = pd.read_csv(os.path.join(corr_dir, region + "_aef_pearson.csv"))
-    mef_corr_df = pd.read_csv(os.path.join(corr_dir, region + "_mef_pearson.csv"))
+    if sector = "Flat":
+        aef_corr_df = pd.read_csv(os.path.join(corr_dir, region + "_aef_pearson.csv"))
     for month in range(1, 13):
-        season = month_season_map[month]
         # AEF/tariff correlation
         for index, row in aef_corr_df.iterrows():
             if (math.isclose(row[months[month - 1]], 0, abs_tol=1e-8) or pd.isna(row[months[month - 1]])):
                 pass  # zero correlation due to flat tariff
             else:
-                new_aef_tariff_data["iso"].append(region)
-                new_aef_tariff_data["season"].append(season)
-                new_aef_tariff_data["month"].append(month)
-                new_aef_tariff_data["corr_coef"].append(row[months[month - 1]])
-        # MEF/DAM correlation
-        for index, row in mef_corr_df[mef_corr_df["month"] == month].iterrows():
-            new_mef_dam_data["iso"].append(region)
-            new_mef_dam_data["season"].append(season)
-            new_mef_dam_data["month"].append(month)
-            new_mef_dam_data["corr_coef"].append(row["pearson_cc"])
+                combined_data["iso"].append(region)
+                combined_data["month"].append(month)
+                combined_data["corr_coef"].append(row[months[month - 1]])
+                combined_data["sector"].append(sector)
 
 ## Create Subplots
 # create all plots on a single subplot
 # 1-column width = 80 mm
 # 2-column width = 190 mm
 # max height is 240 mm
-fig, ax = plt.subplots(2, 1, figsize=(100 / 25.4, 120 / 25.4))
+fig, ax = plt.subplots(2, 1, figsize=(80 / 25.4, 120 / 25.4))
 
 ## Subplot A
 df = pd.DataFrame(new_aef_tariff_data)
-data_dict = {}
-for iso in regions:
-    iso_dict = {}
-    for month in range(12, 0, -1):
-        iso_dict[month] = df[(df["iso"] == iso) & (df["month"] == month)][
-            "corr_coef"
-        ].mean()
-    data_dict[iso] = iso_dict
-a = sns.heatmap(
-    pd.DataFrame(data_dict),
-    cbar_kws={
-        "label": "Pearson Correlation Coefficient",
-        "ticks": [-0.5, -0.25, 0, 0.25, 0.5]
-    },
-    vmin=-0.5,
-    vmax=0.5,
-    cmap="PRGn",
+seasonal_colors = ["#5E9BA1", "#A1645E"]
+bright_seasonal_colors = ["#71bac1", "#c17871"]
+sns.set_palette(bright_seasonal_colors)
+ax[0].axhline(0, linestyle="dotted", color="grey")
+plot_a = sns.violinplot(
+    data=df,
+    x="iso",
+    y="corr_coef",
+    hue="season",
+    linewidth=0.0,
+    width=0.75,
+    density_norm="width",
     ax=ax[0],
+    inner="box",
+    inner_kws={"box_width": 2.0, "marker": '.', "markersize": 3},
 )
 ax[0].set_xlabel("")
-ax[0].set_ylabel("Month")
-# ax.set_title("AEF vs. Tariff")
-ax[0].set_xticklabels(ax[0].get_xticklabels(), rotation=0)
-
+ax[0].set_ylim(-1, 1)
+ax[0].set_ylabel("Pearson Correlation Coefficient")
+# plt.title("AEF vs. Tariffs")
+ax[0].legend(loc="lower right", frameon=False)
 
 ## Subplot B
 df = pd.DataFrame(new_mef_dam_data)
-data_dict = {}
-for iso in regions:
-    iso_dict = {}
-    for month in range(12, 0, -1):
-        iso_dict[month] = df[(df["iso"] == iso) & (df["month"] == month)][
-            "corr_coef"
-        ].mean()
-    data_dict[iso] = iso_dict
-b = sns.heatmap(
-    pd.DataFrame(data_dict),
-    cbar_kws={
-        "label": "Pearson Correlation Coefficient",
-        "ticks": [-0.5, -0.25, 0, 0.25, 0.5]
-    },
-    vmin=-0.5,
-    vmax=0.5,
-    cmap="PRGn",
+seasonal_colors = ["#5E9BA1", "#A1645E"]
+bright_seasonal_colors = ["#71bac1", "#c17871"]
+sns.set_palette(bright_seasonal_colors)
+ax[1].axhline(0, linestyle="dotted", color="grey")
+plot_c = sns.violinplot(
+    data=df,
+    x="iso",
+    y="corr_coef",
+    hue="season",
+    linewidth=0.0,
+    width=0.75,
+    density_norm="width",
     ax=ax[1],
+    inner="box",
+    inner_kws={"box_width": 2.0, "marker": '.', "markersize": 3},
 )
 ax[1].set_xlabel("")
-ax[1].set_ylabel("Month")
-# ax.set_title("MEF vs. DAM")
-ax[1].set_xticklabels(ax[1].get_xticklabels(), rotation=0)
+ax[1].set_ylim(-1, 1)
+ax[1].set_ylabel("Pearson Correlation Coefficient")
+# plt.title("MEF vs. DAM Prices")
+ax[1].legend(loc="lower right", frameon=False)
 
 ## Save Outputs
 labels = ["a.", "b."]
@@ -175,7 +149,7 @@ for label, axis in zip(labels, ax.flatten()):
         1.0,
         label,
         transform=(
-            axis.transAxes + ScaledTranslation(-32 / 72, 0, fig.dpi_scale_trans)
+            axis.transAxes + ScaledTranslation(-36 / 72, 0, fig.dpi_scale_trans)
         ),
         va="bottom",
         fontsize=10,
@@ -183,5 +157,5 @@ for label, axis in zip(labels, ax.flatten()):
 
 fig.tight_layout()
 fig_path = os.path.join(basepath, "figures")
-fig.savefig(os.path.join(fig_path, "Supplementary3.svg"), bbox_inches="tight", dpi=300)
-fig.savefig(os.path.join(fig_path, "Supplementary3.png"), bbox_inches="tight", dpi=300)
+fig.savefig(os.path.join(fig_path, "Supplementary7.svg"), bbox_inches="tight", dpi=300)
+fig.savefig(os.path.join(fig_path, "Supplementary7.png"), bbox_inches="tight", dpi=300)

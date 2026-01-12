@@ -75,9 +75,11 @@ python supplementary1.py
 python supplementary2.py
 python supplementary3.py
 python supplementary4.py
+python supplementary5.py
+python supplementary7.py
 ```
 
-Note that Figure 1 was made outside of Python. Figures 3, 5, and 6 and Supplementary Figure 1 will throw errors without data provided by the user since we cannot re-publish the raw DAM data that was used to generate the published figures.
+Note that Figure 1 and Supplementary Figure 6 were made outside of Python. Figures 3, 5, and 6 and Supplementary Figure 1 will throw errors without data provided by the user since we cannot re-publish the raw DAM data that was used to generate the published figures.
 
 ## File hierarchy
 
