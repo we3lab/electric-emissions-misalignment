@@ -63,7 +63,6 @@ region_color_map = {
     "SPP": "#b3b3b3",
 }
 
-shapes = ["s", "o", "D", "v", "P", "*", "X"]
 regions = ["CAISO", "ERCOT", "ISONE", "MISO", "NYISO", "PJM", "SPP"]
 months = [
     "Jan",
@@ -79,7 +78,6 @@ months = [
     "Nov",
     "Dec",
 ]
-region_shape_dict = dict(zip(regions, shapes))
 
 # SF map coordinates
 x_min = -122.80

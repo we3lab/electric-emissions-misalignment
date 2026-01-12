@@ -23,6 +23,10 @@ Some data cannot be republished under MIT license, in which case links to the da
     - Census boundaries for IBDR display from [Census.gov](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html)
     - Independent System Operator (ISO) shapefile from US Department of Homeland Security's [Homeland Infrastructure Foundation-Level Data (HIFLD)](https://hifld-geoplatform.hub.arcgis.com/datasets/50f80920d36e435d9a34db2bd0fd3ad8_0/explore).
         - ***NOTE***: This dataset is no longer publicly accessible, but similar data is available through EIA's [U.S. Energy Atlas](https://atlas.eia.gov/search) under [RTO Regions](https://atlas.eia.gov/datasets/b286c693074045b3ac9b5d7300162e99_256/explore?location=35.167089%2C-95.679808%2C3.72).
+- *Load profiles*:
+    - Load profiles were the clusters from the [Elmas dataset](https://doi.org/10.6084/m9.figshare.23889780) [5]
+       - Flat load profiles are the default (`col_idx=0`) and the other 18 clusters are described in the Elmas data descriptor.
+       - All load profiles are normalized to 1 MW.
 
 ## Data preprocessing
 
@@ -75,9 +79,11 @@ python supplementary1.py
 python supplementary2.py
 python supplementary3.py
 python supplementary4.py
+python supplementary5.py
+python supplementary7.py
 ```
 
-Note that Figure 1 was made outside of Python. Figures 3, 5, and 6 and Supplementary Figure 1 will throw errors without data provided by the user since we cannot re-publish the raw DAM data that was used to generate the published figures.
+Note that Figure 1 and Supplementary Figure 6 were made outside of Python. Figures 3, 5, and 6 and Supplementary Figure 1 will throw errors without data provided by the user since we cannot re-publish the raw DAM data that was used to generate the published figures.
 
 ## File hierarchy
 
@@ -119,3 +125,5 @@ figures
 [3] Chapin, F. T., Rao, A. K., Sakthivelu, A., Chen, C. S., & Mauter, M. S. (2025). *Industrial and Commercial Electricity Tariffs in the United States* (Version 2023.06.01) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.16739989
 
 [4] David, E., Sakthivelu, A., Rao, A. K., & Mauter, M. S. (2024). *US incentive based demand response program parameters* (Version 2) [Data set]. https://doi.org/10.25740/ck480bd0124
+
+[5] Bellinguer, K., Girard, R., Bocquet, A., & Chevalier, A. (2023). ELMAS: a one-year dataset of hourly electrical load profiles from 424 French industrial and tertiary sectors. *Scientific Data, 10*(1), 686. https://doi.org/10.1038/s41597-023-02542-z
