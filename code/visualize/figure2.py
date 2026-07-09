@@ -232,6 +232,11 @@ for i, r in enumerate(regions):
             alpha=overlay_params["alpha"],
         )
 
+    # add dotted line of 348 kg CO2 / MWh for AEF and 505 kg CO2 / MWh for MEF
+    # underlying data for national average emissions factors comes from eGRID data explorer
+    ax[0].axhline(348, linestyle="dotted", color="grey", linewidth=1)
+    ax[1].axhline(505, linestyle="dotted", color="grey", linewidth=1)
+
     for m in range(12):
         month = df_mef[(df_mef["month"] == m + 1) & (df_mef["isorto"] == r)]
         co2i = month["co2_eq_kg_per_MWh"]

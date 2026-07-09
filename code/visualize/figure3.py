@@ -100,6 +100,20 @@ def calculate_charge_summary(df, datetime_range):
 
             charge_means[charge_type] = np.nanmean(aggregate_charge)
 
+    if charge_ratios["energy"] > 50:
+        print("charge_label:", df["label"].iloc[0])
+        print("charge_type: energy")
+        print("start_date:", effective_start_date)
+        print("ratio:", charge_ratios["energy"])
+        print("billing_df:", df)
+
+    if charge_ratios["demand"] > 50:
+        print("charge_label:", df["label"].iloc[0])
+        print("charge_type: demand")
+        print("start_date:", effective_start_date)
+        print("ratio:", charge_ratios["demand"])
+        print("billing_df:", df)
+
     # compile results
     charge_summary = {
         "charge_label": df["label"].iloc[0],
